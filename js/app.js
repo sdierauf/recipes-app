@@ -10,7 +10,7 @@ $(function() {
 
 	// Register Models to Controllers
 	exampleController.setModel(model)
-	
+
 	// Register Views
 	model.registerView(exampleView)
 
@@ -20,5 +20,6 @@ $(function() {
 // GLOBAL
 // Event constants should be listed here
 EVENTS = {
-	NUM_GUESTS_CHANGED: "numGuestsChanged"
+	NUM_GUESTS_CHANGED: "numGuestsChanged",
+	DISH_CHANGED: "dishChanged"
 }

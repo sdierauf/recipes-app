@@ -4,7 +4,7 @@ var DinnerModel = function() {
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
 	this.numGuests = 0;
-	this.selectedDish;
+	this.menu = {};
 	var views = [];
 
 	this.registerView = function(view) {
@@ -35,38 +35,61 @@ var DinnerModel = function() {
 
 	//Returns the dish that is on the menu for selected type 
 	this.getSelectedDish = function(type) {
-		//TODO Lab 2
+		return this.getDish(this.menu[type])
 	}
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		//TODO Lab 2
+		var dishes = []
+		for (type in menu) {
+			var dish = this.getDish(menu[type])
+			if (dish) {
+				dishes.push(dish)
+			}
+		}
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
 	this.getAllIngredients = function() {
-		//TODO Lab 2
+		var ingredients = [];
+		this.getFullMenu().forEach(function (dish) {
+			ingredients = ingredients.concat(dish.ingredients);
+		})
+		return ingredients;
 	}
 
 	//Returns the total price of the menu (all the ingredients multiplied by number of guests).
 	this.getTotalMenuPrice = function() {
-		//TODO Lab 2
+		var price = 0;
+		this.getAllIngredients().forEach(function (ingredient) {
+			price += ingredient.price;
+		})
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		//TODO Lab 2 
+		var dish = this.getDish(id);
+		this.removeDishFromMenu(id);
+		this.menu[dish.type] = id;
+		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		//TODO Lab 2
+		var dish = this.getDish(id)
+		if (this.menu[dish.type] != id) {
+			console.log("tried to remove a dish that wasn't on the menu!");
+			return;
+		}
+		this.menu[dish.type] = null;
+		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	// Resync all views
 	this.broadcastState = function() {
-		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED)
+		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
+		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

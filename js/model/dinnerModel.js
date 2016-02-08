@@ -24,7 +24,7 @@ var DinnerModel = function() {
 	}
 
 	this.setNumberOfGuests = function(num) {
-		this.numGuests = num
+		this.numGuests = Math.max(num, 0)
 		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
 	}
 

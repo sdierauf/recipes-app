@@ -41,12 +41,13 @@ var DinnerModel = function() {
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
 		var dishes = []
-		for (type in menu) {
-			var dish = this.getDish(menu[type])
+		for (type in this.menu) {
+			var dish = this.getDish(this.menu[type])
 			if (dish) {
 				dishes.push(dish)
 			}
 		}
+		return dishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -64,13 +65,15 @@ var DinnerModel = function() {
 		this.getAllIngredients().forEach(function (ingredient) {
 			price += ingredient.price;
 		})
+		return price
 	}
 
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		var dish = this.getDish(id);
-		this.removeDishFromMenu(id);
+		if (!dish) return;
+		if (this.menu[dish.type]) this.removeDishFromMenu(id);
 		this.menu[dish.type] = id;
 		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
@@ -78,6 +81,7 @@ var DinnerModel = function() {
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		var dish = this.getDish(id)
+		if (!dish) return;
 		if (this.menu[dish.type] != id) {
 			console.log("tried to remove a dish that wasn't on the menu!");
 			return;
@@ -315,7 +319,7 @@ var DinnerModel = function() {
 			'price':4
 			}]
 		},{
-		'id':102,
+		'id':103,
 		'name':'MD 4',
 		'type':'main dish',
 		'image':'meatballs.jpg',

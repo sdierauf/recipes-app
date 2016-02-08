@@ -6,6 +6,13 @@ var ExampleController = function(container) {
 		model = newModel;
 	}
     
+
+
+    this.plusButton = container.find("#plusGuest");
+	this.minusButton = container.find("#minusGuest");
+    this.idInput = container.find("#foodIdInput");
+    this.addId = container.find("#addButton");
+
     var addGuest = function() {
         model.setNumberOfGuests(model.getNumberOfGuests() + 1)
     }
@@ -14,8 +21,15 @@ var ExampleController = function(container) {
         model.setNumberOfGuests(model.getNumberOfGuests() - 1)
     }
 
-    this.plusButton = container.find("#plusGuest");
-	this.minusButton = container.find("#minusGuest");
-    this.plusButton.click(addGuest)
-    this.minusButton.click(removeGuest)
+    var addFoodById = function() {
+        var num = Number(this.idInput.val());
+        if (!num) return;
+        console.log("fuck yeah!");
+        model.addDishToMenu(num);
+        this.idInput.val(0);
+    }.bind(this)  // fucking js scope...
+
+    this.plusButton.click(addGuest);
+    this.minusButton.click(removeGuest);
+    this.addId.click(addFoodById);
 }

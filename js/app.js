@@ -21,5 +21,5 @@ $(function() {
 // Event constants should be listed here
 EVENTS = {
 	NUM_GUESTS_CHANGED: "numGuestsChanged",
-	DISH_CHANGED: "dishChanged"
+	DISH_CHANGED: "dishChanged",
 }

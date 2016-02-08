@@ -3,15 +3,34 @@ var DinnerModel = function() {
  
 	//TODO Lab 2 implement the data structure that will hold number of guest
 	// and selected dinner options for dinner menu
+	this.numGuests = 0;
+	this.selectedDish;
+	var views = [];
 
+	this.registerView = function(view) {
+		views.push(view);
+		this.broadcastState();
+	}
+
+	this.notifyViews = function(eventString) {
+		var ref = this;  // self reference to `this` to avoid .bind() shenanigans
+		views.forEach(function (view) {
+			// Magic js ahead:
+			if (view[eventString]) { // If the view implements view.eventString()
+				view[eventString](ref) // call the function specified by eventString
+				// passing a reference to this model
+			}		
+		});
+	}
 
 	this.setNumberOfGuests = function(num) {
-		//TODO Lab 2
+		this.numGuests = num
+		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
 	}
 
 	// should return 
 	this.getNumberOfGuests = function() {
-		//TODO Lab 2
+		return this.numGuests
 	}
 
 	//Returns the dish that is on the menu for selected type 
@@ -43,6 +62,11 @@ var DinnerModel = function() {
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		//TODO Lab 2
+	}
+
+	// Resync all views
+	this.broadcastState = function() {
+		this.fireEvent(EVENTS.NUM_GUESTS_CHANGED)
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

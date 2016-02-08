@@ -1,4 +1,10 @@
-var ExampleController = function(container, model) {
+var ExampleController = function(container) {
+
+	var model;
+
+	this.setModel = function(newModel) {
+		model = newModel;
+	}
     
     var addGuest = function() {
         model.setNumberOfGuests(model.getNumberOfGuests() + 1)

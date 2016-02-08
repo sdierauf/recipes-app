@@ -6,9 +6,12 @@ $(function() {
 	
 	//And create the needed controllers and views
 	var exampleView = new ExampleView($("#exampleView"));
-	var exampleController = new ExampleController($("#exampleView"), model)
+	var exampleController = new ExampleController($("#exampleView"))
 
-	//Register Views
+	// Register Models to Controllers
+	exampleController.setModel(model)
+	
+	// Register Views
 	model.registerView(exampleView)
 
 });

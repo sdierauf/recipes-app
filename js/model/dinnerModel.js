@@ -66,7 +66,7 @@ var DinnerModel = function() {
 
 	// Resync all views
 	this.broadcastState = function() {
-		this.fireEvent(EVENTS.NUM_GUESTS_CHANGED)
+		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED)
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")

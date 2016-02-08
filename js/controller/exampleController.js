@@ -24,9 +24,8 @@ var ExampleController = function(container) {
     var addFoodById = function() {
         var num = Number(this.idInput.val());
         if (!num) return;
-        console.log("fuck yeah!");
         model.addDishToMenu(num);
-        this.idInput.val(0);
+        this.idInput.val('');
     }.bind(this)  // fucking js scope...
 
     this.plusButton.click(addGuest);

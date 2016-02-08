@@ -17,14 +17,12 @@ var ExampleView = function (container) {
 	}
 
 	this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
-		console.log(model.getNumberOfGuests())
 		this.numberOfGuests.html(model.getNumberOfGuests())
 	}
 
 	this[EVENTS.DISH_CHANGED] = function(model) {
 		this.rebuildMenu(model.getFullMenu())
 		this.cost.html(model.getTotalMenuPrice())
-		console.log(model.getTotalMenuPrice())
 	}
 
 	

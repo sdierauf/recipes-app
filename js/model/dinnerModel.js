@@ -1,26 +1,78 @@
+var ViewManager = function() {
+	var views = {};
+	var activeViews = []; // list of viewNames that are active
+
+	this.assertHasView = function(viewName) {
+		if (!views[viewName]) {
+			console.log(viewName + " wasn't in viewName -> view mapping!");
+		}
+	}
+
+	this.registerView = function(viewName, viewRef) {
+		views[viewName] = viewRef;
+	}
+
+	this.hideView = function(viewName) {
+		this.assertHasView(viewName);
+		views[viewName].hide();
+		activeViews.splice(activeViews.indexOf(viewName), 1);
+	}
+
+	this.hideActiveViews = function() {
+		activeViews.forEach(function(viewName) {
+			this.hideView(viewName);
+		}, this);
+	}
+
+	this.showView = function(viewName) {
+		this.assertHasView(viewName);
+		views[viewName].show();
+		activeViews.push(viewName);
+	}
+
+	this.showOnlyView = function(viewName) {
+		this.hideActiveViews();
+		this.showView(viewName);
+	}
+
+	this.getActiveViews = function() {
+		var activeViews = []
+		activeViews.forEach(function (viewName) {
+			activeViews.push(views[viewName]);
+		});
+		return activeViews;
+	}
+
+	this.notifyViews = function(eventString, model) {
+		this.getActiveViews().forEach(function (view) {
+			// Magic js ahead:
+			if (view[eventString]) { // If the view implements view.eventString()
+				view[eventString](model) // call the function specified by eventString
+				// passing a reference to this model
+			}		
+		});
+	}
+
+}
+
+
 //DinnerModel Object constructor
 var DinnerModel = function() {
- 
-	//TODO Lab 2 implement the data structure that will hold number of guest
+ 	
+ 	var viewManager = new ViewManager();
 	// and selected dinner options for dinner menu
 	this.numGuests = 0;
 	this.menu = {};
-	var views = [];
 
-	this.registerView = function(view) {
-		views.push(view);
+	this.registerView = function(view, viewName) {
+		if (viewName) {
+			viewManager.registerView(viewName, view);
+		}
 		this.broadcastState();
 	}
 
 	this.notifyViews = function(eventString) {
-		var ref = this;  // self reference to `this` to avoid .bind() shenanigans
-		views.forEach(function (view) {
-			// Magic js ahead:
-			if (view[eventString]) { // If the view implements view.eventString()
-				view[eventString](ref) // call the function specified by eventString
-				// passing a reference to this model
-			}		
-		});
+		viewManager.notifyViews(eventString, this);
 	}
 
 	this.setNumberOfGuests = function(num) {

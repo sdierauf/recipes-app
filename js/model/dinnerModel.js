@@ -125,6 +125,7 @@ var DinnerModel = function() {
 		this.getAllIngredients().forEach(function (ingredient) {
 			price += ingredient.price;
 		})
+		price = price * this.numGuests;
 		return price
 	}
 

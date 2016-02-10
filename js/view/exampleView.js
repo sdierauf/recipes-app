@@ -17,6 +17,7 @@ var ExampleView = function (container) {
 	}
 
 	this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
+		console.log("num guests changed");
 		this.numberOfGuests.html(model.getNumberOfGuests())
 	}
 

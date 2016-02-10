@@ -12,7 +12,7 @@ $(function() {
 	exampleController.setModel(model)
 
 	// Register Views
-	model.registerView(exampleView)
+	model.registerView(exampleView, VIEWS.EXAMPLE_VIEW);
 
 	// var viewManager = new ViewManager();
 
@@ -26,3 +26,6 @@ EVENTS = {
 	DISH_CHANGED: "dishChanged",
 }
 
+VIEWS = {
+	EXAMPLE_VIEW: "exampleView"
+}

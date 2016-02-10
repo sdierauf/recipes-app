@@ -6,8 +6,6 @@ var ExampleController = function(container) {
 		model = newModel;
 	}
     
-
-
     this.plusButton = container.find("#plusGuest");
 	this.minusButton = container.find("#minusGuest");
     this.idInput = container.find("#foodIdInput");

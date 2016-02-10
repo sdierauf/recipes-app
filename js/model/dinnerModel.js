@@ -10,11 +10,13 @@ var ViewManager = function() {
 
 	this.registerView = function(viewName, viewRef) {
 		views[viewName] = viewRef;
+		console.log(viewName);
+		console.log(viewRef);
 	}
 
 	this.hideView = function(viewName) {
 		this.assertHasView(viewName);
-		views[viewName].hide();
+		// views[viewName].hide();
 		activeViews.splice(activeViews.indexOf(viewName), 1);
 	}
 
@@ -26,7 +28,7 @@ var ViewManager = function() {
 
 	this.showView = function(viewName) {
 		this.assertHasView(viewName);
-		views[viewName].show();
+		// views[viewName].show();
 		activeViews.push(viewName);
 	}
 
@@ -36,17 +38,20 @@ var ViewManager = function() {
 	}
 
 	this.getActiveViews = function() {
-		var activeViews = []
+		var ret = []
 		activeViews.forEach(function (viewName) {
-			activeViews.push(views[viewName]);
+			ret.push(views[viewName]);
 		});
-		return activeViews;
+		return ret;
 	}
 
 	this.notifyViews = function(eventString, model) {
 		this.getActiveViews().forEach(function (view) {
+			console.log("each view")
+			console.log(view);
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
+				console.log("calling view " + eventString);
 				view[eventString](model) // call the function specified by eventString
 				// passing a reference to this model
 			}		
@@ -67,16 +72,19 @@ var DinnerModel = function() {
 	this.registerView = function(view, viewName) {
 		if (viewName) {
 			viewManager.registerView(viewName, view);
+			viewManager.showView(viewName);
 		}
+
 		this.broadcastState();
 	}
 
 	this.notifyViews = function(eventString) {
+		console.log("notifying")
 		viewManager.notifyViews(eventString, this);
 	}
 
 	this.setNumberOfGuests = function(num) {
-		this.numGuests = Math.max(num, 0)
+		this.numGuests = Math.max(num, 0);
 		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
 	}
 
@@ -92,14 +100,14 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		var dishes = []
+		var menuDishes = []
 		for (type in this.menu) {
 			var dish = this.getDish(this.menu[type])
 			if (dish) {
-				dishes.push(dish)
+				menuDishes.push(dish)
 			}
 		}
-		return dishes;
+		return menuDishes;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.

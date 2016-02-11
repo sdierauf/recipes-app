@@ -16,7 +16,7 @@ var ViewManager = function() {
 
 	this.hideView = function(viewName) {
 		this.assertHasView(viewName);
-		// views[viewName].hide();
+		views[viewName].hide();
 		activeViews.splice(activeViews.indexOf(viewName), 1);
 	}
 
@@ -26,9 +26,19 @@ var ViewManager = function() {
 		}, this);
 	}
 
+	this.forceHideAllViews = function() {
+		// unclean way of destroying all views, do not use.
+		activeViews = [];
+		for (var name in views) {
+			if (views.hasOwnProperty(name)) {
+				views[name].hide();
+			}
+		}
+	}
+
 	this.showView = function(viewName) {
 		this.assertHasView(viewName);
-		// views[viewName].show();
+		views[viewName].show();
 		activeViews.push(viewName);
 	}
 
@@ -69,19 +79,40 @@ var DinnerModel = function() {
 	this.numGuests = 0;
 	this.menu = {};
 
+
+	// Generic view controls 
+
 	this.registerView = function(view, viewName) {
 		if (viewName) {
 			viewManager.registerView(viewName, view);
-			viewManager.showView(viewName);
 		}
-
 		this.broadcastState();
+	}
+
+	this.showView = function(viewName) {
+		viewManager.showView(viewName);
+	}
+
+	this.hideAllViews = function() {
+		viewManager.forceHideAllViews();
 	}
 
 	this.notifyViews = function(eventString) {
 		console.log("notifying")
 		viewManager.notifyViews(eventString, this);
 	}
+
+
+	// Specific view segues (abstract out later)
+
+	this.showCreateDinner = function() {
+		viewManager.hideActiveViews();
+		this.showView(VIEWS.SIDEBAR_VIEW);
+		this.showView(VIEWS.SELECTOR_VIEW);
+	}
+
+
+	// Actual dinner model stuff
 
 	this.setNumberOfGuests = function(num) {
 		this.numGuests = Math.max(num, 0);

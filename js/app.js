@@ -11,17 +11,19 @@ $(function() {
 	var homeController = new HomeController($("#homeView"));
 
 	var dishSelectorView = new DishSelectorView($("#dishselectorView"));
-	var dishSelectorController;
+	var dishSelectorController = new DishSelectorController($("#dishselectorView"));
 
 	var sidebarView = new SidebarView($("#sidebarView"));
-	var sidebarController;
+	var sidebarController = new SidebarController($("#sidebarView"));
 
 	var recipeView = new RecipeView($("#recipeView"));
-	var recipeController;
+	var recipeController = new RecipeController($("#recipeView"))
 
 	// Register Models to Controllers
-	// exampleController.setModel(model)
 	homeController.setModel(model);
+	dishSelectorController.setModel(model);
+	sidebarController.setModel(model);
+	recipeController.setModel(model);
 
 
 	// Register Views

@@ -226,6 +226,20 @@ var DinnerModel = function() {
 		});	
 	}
 
+	this.betterGetAllDishes = function(type, match) {
+		var ret = [];
+		dishes.forEach(function (el) {
+			if (dish.type == type) {
+				if (match) {
+					if (dish.name.indexOf(match) != -1) {
+						
+					}
+				}
+			}
+		})
+
+	}
+
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
 	  for(key in dishes){

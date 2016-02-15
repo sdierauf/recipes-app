@@ -18,6 +18,7 @@ var DishSelectorView = function(container) {
     if (!foods) {
       return;
     }
+    console.log(foods);
     $.each(foods, function (food) {
       var s = "<div class='col-sm-2'>\n"
       s += "<img src=''>\n"
@@ -34,6 +35,6 @@ We gon' slay (slay), gon' slay (okay), we slay (okay), I slay (okay)"
       s += "</p>\n</div>\n";
       this.foodRepo.append(s);
       console.log("appended a food");
-    }, this)
+    });
   }
 }

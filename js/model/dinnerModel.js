@@ -19,9 +19,10 @@ var ViewManager = function() {
 	}
 
 	this.hideActiveViews = function() {
-		activeViews.forEach(function(viewName) {
-			this.hideView(viewName);
-		}, this);
+		this.forceHideAllViews();
+		// activeViews.forEach(function(viewName) {
+		// 	this.hideView(viewName);
+		// }, this);
 	}
 
 	this.forceHideAllViews = function() {
@@ -116,7 +117,7 @@ var DinnerModel = function() {
 	}
 
 	this.dinnerEditSegue = function(){
-		viewManager.hideActiveViews();
+		viewManager.forceHideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}

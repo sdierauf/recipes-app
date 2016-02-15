@@ -36,6 +36,7 @@ var RecipeView = function(container) {
     this.details.html(dish.description);
     this.loadIngredients(model, dish);
     this.totalCostOfRecipe.html(model.getCostOfDish(dish));
+    // this.numPeopleForRecipe.html(model.)
   }
 
   

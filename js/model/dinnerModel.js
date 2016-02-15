@@ -192,6 +192,7 @@ var DinnerModel = function() {
 		if (!dish) return;
 		if (this.menu[dish.type]) this.removeDishFromMenu(id);
 		this.menu[dish.type] = id;
+		this.lastDishId = 0;
 		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 

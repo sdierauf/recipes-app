@@ -106,7 +106,7 @@ var DinnerModel = function() {
 
 	// Specific view segues (abstract out later)
 
-	this.showRecipePage = function() {
+	this.showRecipe = function() {
 		alert("show recipe page");
 	}
 

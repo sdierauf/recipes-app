@@ -20,8 +20,8 @@ var DishSelectorView = function(container) {
     }
     console.log(foods);
     foods.forEach(function (food) {
-      var s = "<div class='col-sm-2'>\n"
-      s += "<img src=''>\n"
+      var s = "<div class='col-sm-3'>\n"
+      s += "<img src='images/icecream.jpg' width='100%'>\n"
       s += "<p style='background-color: rgb(221, 221, 221)'>" + food.name + "</p>\n"
       s += "<p> I see it, I want it, I stunt, yellow-bone it\
 I dream it, I work hard, I grind 'til I own it";

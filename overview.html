@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Dinner Overview</title>
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+
+</head>
+
+<body>
+	<div class="container">
+		<div id="overview">
+		<div class="row">
+			<div class="col-md-4">
+				<h1>Homelette</h1>
+			</div>
+			<div class="col-md-8">
+				<p style="font-style:italic; "> From the best chefs in the world to your kitchen </p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-8">
+				<span style="font-size: 250%;"> My dinner: </span> <span style="font-size: 250%;"> 4 </span> <span style="font-size: 250%;"> people</span>
+			</div>
+			<div class="col-md-4">
+				<button class="btn">Go back and edit dinner</button>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 100px;">
+			<div class="col-md-2 col-sm-offset-1">
+				<img src="images/bakedbrie.jpg" width="100%">
+				<p>Lasagne</p>
+				<p> 70 kr </p>
+			</div>
+			<div class="col-md-2 col-sm-offset-1">
+				<img src="images/bakedbrie.jpg" width="100%">
+				<p>Lasagne</p>
+				<p> 70 kr </p>
+			</div>
+			<div class="col-md-2 col-sm-offset-1">
+				<img src="images/bakedbrie.jpg" width="100%">
+				<p> Lasagne</p>
+				<p> 70 kr </p>
+			</div>
+			<div class="col-md-1" style="border-left: solid;">
+				<p> Total: </p>
+				<p> 210 kr </p>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 100px; border-top: solid">
+			<button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
+		</div>
+	</div>
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery.js"></script>
+	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
+	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+	<!-- The application JavaScript code -->
+	<script src="js/app.js"></script>
+	<script src="js/model/dinnerModel.js"></script>
+	<script src="js/view/exampleView.js"></script>
+	<script src="js/controller/exampleController.js"></script>
+	<script>
+		function getRandomColor() {
+		    var letters = '0123456789ABCDEF'.split('');
+		    var color = '#';
+		    for (var i = 0; i < 6; i++ ) {
+		        color += letters[Math.floor(Math.random() * 16)];
+		    }
+		    return color;
+		}
+		var elem = document.querySelectorAll("*");
+		for (var i = 0; i < elem.length; i++) {
+			var c = getRandomColor();
+			elem[i].style.border = "thin solid " + c;
+		}
+	</script>
+</body>
+</html>

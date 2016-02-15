@@ -7,10 +7,10 @@ var ResultController = function(container) {
     model = newModel;
   }
 
-  var showRecipePageSegue = function() {
+  var showRecipeSegue = function() {
     console.log("fuck yyeah")
-    model.showRecipePage();
+    model.showRecipe();
   }
   
-  this.linkToRecipePage.click(showRecipePageSegue);
+  this.linkToRecipePage.click(showRecipeSegue);
 }

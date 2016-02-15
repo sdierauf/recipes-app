@@ -10,8 +10,6 @@ var ViewManager = function() {
 
 	this.registerView = function(viewName, viewRef) {
 		views[viewName] = viewRef;
-		console.log(viewName);
-		console.log(viewRef);
 	}
 
 	this.hideView = function(viewName) {
@@ -57,11 +55,8 @@ var ViewManager = function() {
 
 	this.notifyViews = function(eventString, model) {
 		this.getActiveViews().forEach(function (view) {
-			console.log("each view")
-			console.log(view);
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
-				console.log("calling view " + eventString);
 				view[eventString](model) // call the function specified by eventString
 				// passing a reference to this model
 			}		
@@ -80,6 +75,7 @@ var DinnerModel = function() {
 	this.menu = {};
 	this.searchType = '';
 	this.searchString = '';
+	this.lastDishId = 0;
 
 
 	// Generic view controls 
@@ -100,12 +96,18 @@ var DinnerModel = function() {
 	}
 
 	this.notifyViews = function(eventString) {
-		console.log("notifying")
 		viewManager.notifyViews(eventString, this);
 	}
 
 
 	// Specific view segues (abstract out later)
+
+	this.showRecipe = function() {
+		viewManager.forceHideAllViews();
+		this.showView(VIEWS.SIDEBAR_VIEW);
+		this.showView(VIEWS.RECIPE_VIEW);
+		this.notifyViews(EVENTS.DISH_CHANGED);
+	}
 
 	this.showCreateDinner = function() {
 		viewManager.hideActiveViews();
@@ -214,6 +216,7 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
+		// this is the worst code I have ever seen
 		return $(dishes).filter(function(index,dish) {
 			var found = true;
 			if(filter){
@@ -230,6 +233,22 @@ var DinnerModel = function() {
 			}
 			return dish.type == type && found;
 		});	
+	}
+
+	this.betterGetAllDishes = function(type, match) {
+		var ret = [];
+		dishes.forEach(function (el) {
+			if (el.type == type) {
+				if (match) {
+					if (el.name.indexOf(match) != -1) {
+						ret.push(el);
+					}
+				} else {
+					ret.push(el);
+				}
+			}
+		});
+		return ret;
 	}
 
 	//function that returns a dish of specific ID

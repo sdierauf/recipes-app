@@ -110,104 +110,46 @@
           </div>
         </div>
       </div>
-    </div>
-
 
     <!-- Recipe View -->
-    <div id="recipeView" class="col-md-9">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Lasagne</h2>
-          <div class="row">
-            <div class="col-sm-12">
-              <img src="images/bakedbrie.jpg" width="100%">
+      <div id="recipeView" class="col-md-9">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 id="foodName"></h2>
+            <div class="row">
+              <div class="col-sm-12">
+                <img id="foodImage" width="100%">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <p id="details">
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <button class="btn btn-primary">Back to select dish</button>
+              </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <p>Y'all haters corny with that illuminati mess
-                Paparazzi, catch my fly, and my cocky fresh
-                I'm so reckless when I rock my Givenchy dress (stylin')
-                I'm so possessive so I rock his Roc necklaces
-                My daddy Alabama, Momma Louisiana
-                You mix that negro with that Creole make a Texas bama
-                I like my baby heir with baby hair and afros
-                I like my negro nose with Jackson Five nostrils
-                Earned all this money but they never take the country out me
-                I got a hot sauce in my bag, swag
-              </p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-12">
-              <button class="btn btn-primary">Back to select dish</button>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="row">
-            <div class="col-sm-12">
-              <h3>Ingredients for <span>4</span> people:</h3>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div id="fake-table" class="col-sm-12">
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
-              </div>
-              <div class="row">
-                <div class="col-xs-3">2 tbsp</div>
-                <div class="col-xs-5">lean beef mince</div>
-                <div class="col-xs-2">SEK</div>
-                <div class="col-xs-2">5.00</div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-sm-12">
+                <h3>Ingredients for <span id="recipeNumPeople">4</span> people:</h3>
               </div>
             </div>
             <hr>
             <div class="row">
-              <div class="col-sm-9">
-                <button class="btn btn-primary">Confirm dish</button>
+              <div id="ingredientsList" class="col-sm-12">
               </div>
-              <div class="col-sm-3">SEK 100.00</div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-9">
+                  <button class="btn btn-primary">Confirm dish</button>
+                </div>
+                <div class="col-sm-3">SEK <span id="totalCostOfRecipe"></span></div>
+              </div>
             </div>
           </div>
         </div>

@@ -80,6 +80,7 @@ var DinnerModel = function() {
 	this.menu = {};
 	this.searchType = '';
 	this.searchString = '';
+	this.lastDishId = 0;
 
 
 	// Generic view controls 
@@ -107,7 +108,10 @@ var DinnerModel = function() {
 	// Specific view segues (abstract out later)
 
 	this.showRecipe = function() {
-		alert("show recipe page");
+		viewManager.forceHideAllViews();
+		this.showView(VIEWS.SIDEBAR_VIEW);
+		this.showView(VIEWS.RECIPE_VIEW);
+		this.notifyViews(EVENTS.DISH_CHANGED);
 	}
 
 	this.showCreateDinner = function() {

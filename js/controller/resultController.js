@@ -1,5 +1,6 @@
-var ResultController = function(container) {
+var ResultController = function(container, foodId) {
   var model;
+  var id = foodId;
 
   this.linkToRecipePage = container.find("img");
 
@@ -8,7 +9,7 @@ var ResultController = function(container) {
   }
 
   var showRecipeSegue = function() {
-    console.log("fuck yyeah")
+    model.lastDishId = id;
     model.showRecipe();
   }
   

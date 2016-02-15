@@ -27,7 +27,7 @@ var DishSelectorView = function(container) {
 I dream it, I work hard, I grind 'til I own it";
       s += "</p>\n</div>\n";
       this.foodRepo.append(s);
-      var resultController = new ResultController($("#f" + food.id));
+      var resultController = new ResultController($("#f" + food.id), food.id);
       resultController.setModel(model);
     }, this);
   }

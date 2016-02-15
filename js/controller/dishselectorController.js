@@ -9,7 +9,6 @@ var DishSelectorController = function(container) {
   this.searchInput = container.find("#searchInput");
   this.foodCategory = container.find("#foodCategory");
 
-
   var searchClicked = function() {
 
     var searchTerm = searchInput.value;
@@ -18,6 +17,7 @@ var DishSelectorController = function(container) {
     model.searchFood(searchTerm, category);
 
   }.bind(this);
+
 
   this.searchButton.click(searchClicked);
 

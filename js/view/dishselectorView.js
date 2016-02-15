@@ -18,16 +18,17 @@ var DishSelectorView = function(container) {
     if (!foods) {
       return;
     }
-    console.log(foods);
     foods.forEach(function (food) {
-      var s = "<div class='col-sm-3'>\n"
-      s += "<img src='images/icecream.jpg' width='100%'>\n"
+      // create a view-controller for each result.
+      var s = "<div class='col-sm-3' id='f"+ food.id + "'>\n"
+      s += "<img src='images/" + food.image + "' width='100%'>\n"
       s += "<p style='background-color: rgb(221, 221, 221)'>" + food.name + "</p>\n"
       s += "<p> I see it, I want it, I stunt, yellow-bone it\
 I dream it, I work hard, I grind 'til I own it";
       s += "</p>\n</div>\n";
       this.foodRepo.append(s);
-      console.log("appended a food");
+      var resultController = new ResultController($("#f" + food.id));
+      resultController.setModel(model);
     }, this);
   }
 }

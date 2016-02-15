@@ -100,12 +100,15 @@ var DinnerModel = function() {
 	}
 
 	this.notifyViews = function(eventString) {
-		console.log("notifying")
 		viewManager.notifyViews(eventString, this);
 	}
 
 
 	// Specific view segues (abstract out later)
+
+	this.showRecipePage = function() {
+		alert("show recipe page");
+	}
 
 	this.showCreateDinner = function() {
 		viewManager.hideActiveViews();

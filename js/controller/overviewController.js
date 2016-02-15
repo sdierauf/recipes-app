@@ -1,4 +1,4 @@
-var overviewController = function(container){
+var OverviewController = function(container) {
 
 	var model;
 	var goBackAndEditDinner = container.find("#goBackAndEditDinnerButton");

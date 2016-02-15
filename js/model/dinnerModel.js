@@ -110,7 +110,7 @@ var DinnerModel = function() {
 	}
 
 	this.showCreateDinner = function() {
-		viewManager.hideActiveViews();
+		viewManager.forceHideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}
@@ -118,7 +118,7 @@ var DinnerModel = function() {
 	this.dinnerEditSegue = function(){
 		viewManager.hideActiveViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.RECIPE_VIEW);
+		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
 	this.searchFood = function(searchTerm, category) {

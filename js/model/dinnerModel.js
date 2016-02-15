@@ -208,6 +208,7 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
+		// this is the worst code I have ever seen
 		return $(dishes).filter(function(index,dish) {
 			var found = true;
 			if(filter){
@@ -229,15 +230,17 @@ var DinnerModel = function() {
 	this.betterGetAllDishes = function(type, match) {
 		var ret = [];
 		dishes.forEach(function (el) {
-			if (dish.type == type) {
+			if (el.type == type) {
 				if (match) {
-					if (dish.name.indexOf(match) != -1) {
-						
+					if (el.name.indexOf(match) != -1) {
+						ret.push(el);
 					}
+				} else {
+					ret.push(el);
 				}
 			}
-		})
-
+		});
+		return ret;
 	}
 
 	//function that returns a dish of specific ID

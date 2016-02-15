@@ -78,6 +78,8 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	this.numGuests = 0;
 	this.menu = {};
+	this.searchType = '';
+	this.searchString = '';
 
 
 	// Generic view controls 
@@ -111,6 +113,12 @@ var DinnerModel = function() {
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
+	this.searchFood = function(searchTerm, category) {
+		this.searchType = category;
+		this.searchString = searchTerm;
+		this.notifyViews(EVENTS.FILTER_FOOD);
+	}
+
 
 	// Actual dinner model stuff
 
@@ -139,6 +147,14 @@ var DinnerModel = function() {
 			}
 		}
 		return menuDishes;
+	}
+
+	this.getCostOfDish = function(dish) {
+		var totalPrice = 0;
+		dish.ingredients.forEach(function(ingredient) {
+			totalPrice += ingredient.price;
+		});
+		return totalPrice;
 	}
 
 	//Returns all ingredients for all the dishes on the menu.
@@ -192,22 +208,22 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
-	  return $(dishes).filter(function(index,dish) {
-		var found = true;
-		if(filter){
-			found = false;
-			$.each(dish.ingredients,function(index,ingredient) {
-				if(ingredient.name.indexOf(filter)!=-1) {
+		return $(dishes).filter(function(index,dish) {
+			var found = true;
+			if(filter){
+				found = false;
+				$.each(dish.ingredients,function(index,ingredient) {
+					if(ingredient.name.indexOf(filter)!=-1) {
+						found = true;
+					}
+				});
+				if(dish.name.indexOf(filter) != -1)
+				{
 					found = true;
 				}
-			});
-			if(dish.name.indexOf(filter) != -1)
-			{
-				found = true;
 			}
-		}
-	  	return dish.type == type && found;
-	  });	
+			return dish.type == type && found;
+		});	
 	}
 
 	//function that returns a dish of specific ID

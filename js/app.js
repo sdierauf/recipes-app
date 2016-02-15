@@ -45,6 +45,7 @@ $(function() {
 EVENTS = {
 	NUM_GUESTS_CHANGED: "numGuestsChanged",
 	DISH_CHANGED: "dishChanged",
+	FILTER_FOOD: "filterFood"
 }
 
 VIEWS = {

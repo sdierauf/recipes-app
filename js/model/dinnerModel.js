@@ -10,8 +10,6 @@ var ViewManager = function() {
 
 	this.registerView = function(viewName, viewRef) {
 		views[viewName] = viewRef;
-		console.log(viewName);
-		console.log(viewRef);
 	}
 
 	this.hideView = function(viewName) {
@@ -57,11 +55,8 @@ var ViewManager = function() {
 
 	this.notifyViews = function(eventString, model) {
 		this.getActiveViews().forEach(function (view) {
-			console.log("each view")
-			console.log(view);
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
-				console.log("calling view " + eventString);
 				view[eventString](model) // call the function specified by eventString
 				// passing a reference to this model
 			}		

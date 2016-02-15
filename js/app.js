@@ -7,6 +7,9 @@ $(function() {
 	// And create the needed controllers and views
 	// var exampleView = new ExampleView($("#exampleView"));
 	// var exampleController = new ExampleController($("#exampleView"));
+	var overviewView = new overviewController($("overviewView"));
+	var overviewController = new overviewController($("overviewView"));
+
 	var homeView = new HomeView($("#homeView"));
 	var homeController = new HomeController($("#homeView"));
 
@@ -31,6 +34,7 @@ $(function() {
 	model.registerView(dishSelectorView, VIEWS.SELECTOR_VIEW);
 	model.registerView(recipeView, VIEWS.RECIPE_VIEW);
 	model.registerView(sidebarView, VIEWS.SIDEBAR_VIEW);
+	model.registerView(overviewView, VIEWS.CONFIRM_VIEW);
 
 	// Init
 	model.hideAllViews();
@@ -53,5 +57,6 @@ VIEWS = {
 	SELECTOR_VIEW: "dishSelectorView",
 	RECIPE_VIEW: "recipeView",
 	SIDEBAR_VIEW: "sidebarView",
-	HOME_VIEW: "homeView"
+	HOME_VIEW: "homeView",
+	CONFIRM_VIEW: "overviewView"
 }

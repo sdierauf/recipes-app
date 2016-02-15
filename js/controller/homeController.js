@@ -8,7 +8,7 @@ var HomeController = function(container) {
   }
 
   var createDinnerSegue = function() {
-    model.showCreateDinner();
+    model.dinnerEditSegue();
   }
 
   this.createDinnerButton.click(createDinnerSegue);

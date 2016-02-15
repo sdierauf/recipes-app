@@ -13,13 +13,13 @@
 
 <body>
 	<div class="container">
-		<div id="overview">
+		<div id="overviewView">
 		<div class="row">
 			<div class="col-md-4">
 				<h1>Homelette</h1>
 			</div>
 			<div class="col-md-8">
-				<p style="font-style:italic; "> From the best chefs in the world to your kitchen </p>
+				<p style="font-style:italic;"> From the best chefs in the world to your kitchen </p>
 			</div>
 		</div>
 		<div class="row">
@@ -27,30 +27,12 @@
 				<span style="font-size: 250%;"> My dinner: </span> <span style="font-size: 250%;"> 4 </span> <span style="font-size: 250%;"> people</span>
 			</div>
 			<div class="col-md-4">
-				<button class="btn">Go back and edit dinner</button>
+				<button class="btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
 			</div>
 		</div>
 
-		<div class="row" style="margin-top: 100px;">
-			<div class="col-md-2 col-sm-offset-1">
-				<img src="images/bakedbrie.jpg" width="100%">
-				<p>Lasagne</p>
-				<p> 70 kr </p>
-			</div>
-			<div class="col-md-2 col-sm-offset-1">
-				<img src="images/bakedbrie.jpg" width="100%">
-				<p>Lasagne</p>
-				<p> 70 kr </p>
-			</div>
-			<div class="col-md-2 col-sm-offset-1">
-				<img src="images/bakedbrie.jpg" width="100%">
-				<p> Lasagne</p>
-				<p> 70 kr </p>
-			</div>
-			<div class="col-md-1" style="border-left: solid;">
-				<p> Total: </p>
-				<p> 210 kr </p>
-			</div>
+		<div class="row" style="margin-top: 100px;" id="listOfPlatters">
+			<!-- Get dinner menu and add here using overviewController.setDinnerItems -->
 		</div>
 
 		<div class="row" style="margin-top: 100px; border-top: solid">
@@ -68,6 +50,7 @@
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
 	<script src="js/controller/exampleController.js"></script>
+	<script src="js/controller/overviewController.js"></script>
 	<script>
 		function getRandomColor() {
 		    var letters = '0123456789ABCDEF'.split('');
@@ -82,6 +65,8 @@
 			var c = getRandomColor();
 			elem[i].style.border = "thin solid " + c;
 		}
+
+
 	</script>
 </body>
 </html>

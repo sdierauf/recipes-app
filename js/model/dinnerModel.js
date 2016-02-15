@@ -113,6 +113,12 @@ var DinnerModel = function() {
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
+	this.dinnerEditSegue = function(){
+		viewManager.hideActiveViews();
+		this.showView(VIEWS.SIDEBAR_VIEW);
+		this.showView(VIEWS.RECIPE_VIEW);
+	}
+
 	this.searchFood = function(searchTerm, category) {
 		this.searchType = category;
 		this.searchString = searchTerm;

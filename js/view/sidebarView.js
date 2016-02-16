@@ -21,13 +21,18 @@ var SidebarView = function(container) {
       row += "</td><td>";
       row += model.getCostOfDish(dish);
       row += "</td></tr>\n";
-      foodItems.append(row);
-    });
+      this.foodItems.append(row);
+    }, this);
+    //append pending?
+    if (model.lastDishId != 0) {
+      this.foodItems.append("<tr><td>pending " + model.lastDishId + "</td></tr>");
+    }
   }
 
   // Event functions
   this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
-    this.peopleCounter.html(model.getNumberOfGuests())
+    this.peopleCounter.html(model.getNumberOfGuests());
+    this.agregateCost.html(model.getTotalMenuPrice());
   }
 
   this[EVENTS.DISH_CHANGED] = function(model) {

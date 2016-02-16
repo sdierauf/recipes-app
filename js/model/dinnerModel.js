@@ -19,9 +19,10 @@ var ViewManager = function() {
 	}
 
 	this.hideActiveViews = function() {
-		activeViews.forEach(function(viewName) {
-			this.hideView(viewName);
-		}, this);
+		this.forceHideAllViews();
+		// activeViews.forEach(function(viewName) {
+		// 	this.hideView(viewName);
+		// }, this);
 	}
 
 	this.forceHideAllViews = function() {
@@ -110,15 +111,15 @@ var DinnerModel = function() {
 	}
 
 	this.showCreateDinner = function() {
-		viewManager.hideActiveViews();
+		viewManager.forceHideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
 	this.dinnerEditSegue = function(){
-		viewManager.hideActiveViews();
+		viewManager.forceHideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.RECIPE_VIEW);
+		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
 	this.searchFood = function(searchTerm, category) {
@@ -191,6 +192,7 @@ var DinnerModel = function() {
 		if (!dish) return;
 		if (this.menu[dish.type]) this.removeDishFromMenu(id);
 		this.menu[dish.type] = id;
+		this.lastDishId = 0;
 		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 

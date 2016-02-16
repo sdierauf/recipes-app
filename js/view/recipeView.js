@@ -31,11 +31,13 @@ var RecipeView = function(container) {
 
   this[EVENTS.DISH_CHANGED] = function(model) {
     var dish = model.getDish(model.lastDishId);
+    if (!dish) return;
     this.foodName.html(dish.name);
     this.foodImage.attr("src", "images/" + dish.image);
     this.details.html(dish.description);
     this.loadIngredients(model, dish);
     this.totalCostOfRecipe.html(model.getCostOfDish(dish));
+    // this.numPeopleForRecipe.html(model.)
   }
 
   

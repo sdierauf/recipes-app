@@ -20,12 +20,14 @@ var DishSelectorView = function(container) {
     }
     foods.forEach(function (food) {
       // create a view-controller for each result.
-      var s = "<div class='col-sm-3' id='f"+ food.id + "'>\n"
+      var s = "<div class='col-sm-3' id='f"+ food.id + "' style='flex=1';>\n"
+      s += "<div style='border:2px solid black; padding: 10px;'> "
       s += "<img src='images/" + food.image + "' width='100%'>\n"
-      s += "<p style='background-color: rgb(221, 221, 221)'>" + food.name + "</p>\n"
-      s += "<p> I see it, I want it, I stunt, yellow-bone it\
-I dream it, I work hard, I grind 'til I own it";
+      s += "<p style='background-color: rgb(221, 221, 221)'; text-align:center;>" + food.name + "</p></div>\n"
+      s += "<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore";
+      s += "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
       s += "</p>\n</div>\n";
+      console.log(s);
       this.foodRepo.append(s);
       var resultController = new ResultController($("#f" + food.id), food.id);
       resultController.setModel(model);

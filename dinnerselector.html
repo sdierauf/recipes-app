@@ -19,7 +19,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-md-3" style="border: medium; border-color: #FF0000; border-style:solid;">
 				<h3>My Dinner</h3>
 				<div class="row">
 					<div class="col-sm-6">
@@ -64,8 +64,8 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-9">
-				<div class="row" style="background-color: #FFFFCC; opacity: 0.95;">
+			<div class="col-md-9" style="border: medium; border-color: #FF0000; border-style:solid;">
+				<div class="row" style="background-color: #FFFFCC; opacity: 0.95; border: thin; border-color: #FFFF00; border-style:solid;">
 					<h3>Select Dish:</h3>
 					<hr>
 					<div class="col-sm-6">
@@ -98,25 +98,27 @@
 						<br>
 						<br>
 						<br>
-						<div class="col-sm-2" style="margin-right:30px; margin-left: 15px">
-							<img src="images/bakedbrie.jpg">
-							<p style="background-color: rgb(221, 221, 221)">Baked Brie</p>
-							<p>Lorum ipsum asdasdf ads fasd fasd fas dfa sdf asdf asd fas dfa sdf asdf asd fasdf asdf as dfa dsfa sdf asdf asdf adsf asdf asd fa sdf asdf asdf asdf afsd</p>
+						<div class="col-sm-3" style="margin-right:10px; margin-left: 15px">
+							<div style="border:2px solid black;">
+								<img src="images/bakedbrie.jpg" style="border:2px solid black; width:100%;">
+								<p style="background-color: rgb(221, 221, 221); text-align:center; margin-bottom:0px">Baked Brie</p>
+							</div>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 						</div>
-						<div class="col-sm-2" style="margin-right:30px">
-							<img src="images/bakedbrie.jpg">
+						<div class="col-sm-3" style="margin-right:10px">
+							<img src="images/bakedbrie.jpg" style="border:2px solid black; width:100%;">
 							<p style="background-color: rgb(221, 221, 221)">Baked Brie</p>
-							<p>Lorum ipsum asdasdf ads fasd fasd fas dfa sdf asdf asd fas dfa sdf asdf asd fasdf asdf as dfa dsfa sdf asdf asdf adsf asdf asd fa sdf asdf asdf asdf afsd</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 						</div>
-						<div class="col-sm-2" style="margin-right:30px">
-							<img src="images/bakedbrie.jpg">
+						<div class="col-sm-3" style="margin-right:10px">
+							<img src="images/bakedbrie.jpg" style="border:2px solid black; width:100%;">
 							<p style="background-color: rgb(221, 221, 221)">Baked Brie</p>
-							<p>Lorum ipsum asdasdf ads fasd fasd fas dfa sdf asdf asd fas dfa sdf asdf asd fasdf asdf as dfa dsfa sdf asdf asdf adsf asdf asd fa sdf asdf asdf asdf afsd</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 						</div>
-						<div class="col-sm-2" style="margin-right:30px">
-							<img src="images/bakedbrie.jpg">
+						<div class="col-sm-3" style="margin-right:10px">
+							<img src="images/bakedbrie.jpg" style="border:2px solid black; width:100%;">
 							<p style="background-color: rgb(221, 221, 221)">Baked Brie</p>
-							<p>Lorum ipsum asdasdf ads fasd fasd fas dfa sdf asdf asd fas dfa sdf asdf asd fasdf asdf as dfa dsfa sdf asdf asdf adsf asdf asd fa sdf asdf asdf asdf afsd</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
 						</div>
 
 					</div>
@@ -147,7 +149,7 @@
 		var elem = document.querySelectorAll("*");
 		for (var i = 0; i < elem.length; i++) {
 			var c = getRandomColor();
-			elem[i].style.border = "thin solid " + c;
+			//elem[i].style.border = "thin solid " + c;
 		}
 	</script>
 </body>

@@ -18,7 +18,7 @@ var SidebarController = function(container) {
   }
 
   var confirmDinnerSegue = function() {
-    alert("not sure what to do yet");
+    model.dinnerEditSegue();
   }
 
 

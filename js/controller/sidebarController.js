@@ -10,15 +10,15 @@ var SidebarController = function(container) {
   this.confirmDinnerButton = container.find("#confirmDinner");
 
   var addGuest = function() {
-    model.setNumberOfGuests(model.getNumberOfGuests() + 1)
+    model.setNumberOfGuests(model.getNumberOfGuests() + 1);
   }
 
   var removeGuest = function() {
-    model.setNumberOfGuests(model.getNumberOfGuests() - 1)
+    model.setNumberOfGuests(model.getNumberOfGuests() - 1);
   }
 
   var confirmDinnerSegue = function() {
-    model.dinnerEditSegue();
+    model.showDinnerOverview();
   }
 
 

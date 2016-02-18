@@ -20,13 +20,21 @@ $(function() {
 	var sidebarController = new SidebarController($("#sidebarView"));
 
 	var recipeView = new RecipeView($("#recipeView"));
-	var recipeController = new RecipeController($("#recipeView"))
+	var recipeController = new RecipeController($("#recipeView"));
+
+	var overviewView = new OverviewView($("#overviewView"));
+	var overviewController = new OverviewController($("#overviewView"));
+
+	var instructionsView = new InstructionsView($("#instructionsView"));
+	var instructionsController = new InstructionsController($("#instructionsView"));
 
 	// Register Models to Controllers
 	homeController.setModel(model);
 	dishSelectorController.setModel(model);
 	sidebarController.setModel(model);
 	recipeController.setModel(model);
+	overviewController.setModel(model);
+	instructionsController.setModel(model);
 
 
 	// Register Views
@@ -34,7 +42,8 @@ $(function() {
 	model.registerView(dishSelectorView, VIEWS.SELECTOR_VIEW);
 	model.registerView(recipeView, VIEWS.RECIPE_VIEW);
 	model.registerView(sidebarView, VIEWS.SIDEBAR_VIEW);
-	// model.registerView(overviewView, VIEWS.CONFIRM_VIEW);
+	model.registerView(overviewView, VIEWS.OVERVIEW_VIEW);
+	model.registerView(instructionsView, VIEWS.INSTRUCTIONS_VIEW);
 
 	// Init
 	model.hideAllViews();
@@ -58,5 +67,7 @@ VIEWS = {
 	RECIPE_VIEW: "recipeView",
 	SIDEBAR_VIEW: "sidebarView",
 	HOME_VIEW: "homeView",
-	CONFIRM_VIEW: "overviewView"
+	OVERVIEW_VIEW: "overviewView",
+	HEADER_VIEW: "headerView",
+	INSTRUCTIONS_VIEW: "instructionsView"
 }

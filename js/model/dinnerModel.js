@@ -10,6 +10,8 @@ var ViewManager = function() {
 
 	this.registerView = function(viewName, viewRef) {
 		views[viewName] = viewRef;
+		console.log(viewName);
+		console.log(viewRef);
 	}
 
 	this.hideView = function(viewName) {
@@ -19,16 +21,16 @@ var ViewManager = function() {
 	}
 
 	this.hideActiveViews = function() {
-		this.forceHideAllViews();
-		// activeViews.forEach(function(viewName) {
-		// 	this.hideView(viewName);
-		// }, this);
+		activeViews.forEach(function(viewName) {
+			this.hideView(viewName);
+		}, this);
 	}
 
 	this.forceHideAllViews = function() {
 		// unclean way of destroying all views, do not use.
 		activeViews = [];
 		for (var name in views) {
+			//this.hideView(name);
 			if (views.hasOwnProperty(name)) {
 				views[name].hide();
 			}
@@ -56,8 +58,10 @@ var ViewManager = function() {
 
 	this.notifyViews = function(eventString, model) {
 		this.getActiveViews().forEach(function (view) {
+			console.log(view);
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
+				console.log("calling view " +  eventString);
 				view[eventString](model) // call the function specified by eventString
 				// passing a reference to this model
 			}		
@@ -72,11 +76,10 @@ var DinnerModel = function() {
  	
  	var viewManager = new ViewManager();
 	// and selected dinner options for dinner menu
-	this.numGuests = 0;
+	this.numGuests = 4;//Preset to 4
 	this.menu = {};
 	this.searchType = '';
 	this.searchString = '';
-	this.lastDishId = 0;
 
 
 	// Generic view controls 
@@ -104,22 +107,20 @@ var DinnerModel = function() {
 	// Specific view segues (abstract out later)
 
 	this.showRecipe = function() {
-		viewManager.forceHideAllViews();
+		viewManager.hideActiveViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
-		this.notifyViews(EVENTS.DISH_CHANGED);
-	}
-
-	this.showCreateDinner = function() {
-		viewManager.forceHideAllViews();
-		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
 	this.dinnerEditSegue = function(){
-		viewManager.forceHideAllViews();
+		viewManager.hideActiveViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
+	}
+
+	this.showDinnerOverview = function() {
+		viewManager.hideActiveViews();
+		this.showView(VIEWS.OVERVIEW_VIEW);
 	}
 
 	this.searchFood = function(searchTerm, category) {
@@ -192,7 +193,6 @@ var DinnerModel = function() {
 		if (!dish) return;
 		if (this.menu[dish.type]) this.removeDishFromMenu(id);
 		this.menu[dish.type] = id;
-		this.lastDishId = 0;
 		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
@@ -218,7 +218,6 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (type,filter) {
-		// this is the worst code I have ever seen
 		return $(dishes).filter(function(index,dish) {
 			var found = true;
 			if(filter){
@@ -238,20 +237,20 @@ var DinnerModel = function() {
 	}
 
 	this.betterGetAllDishes = function(type, match) {
-		var ret = [];
-		dishes.forEach(function (el) {
-			if (el.type == type) {
-				if (match) {
-					if (el.name.indexOf(match) != -1) {
-						ret.push(el);
-					}
-				} else {
-					ret.push(el);
-				}
-			}
-		});
-		return ret;
-	}
+                var ret = [];
+                dishes.forEach(function (el) {
+                        if (el.type == type) {
+                                if (match) {
+                                        if (el.name.indexOf(match) != -1) {
+                                                ret.push(el);
+                                        }
+                                } else {
+                                        ret.push(el);
+                                }
+                        }
+                });
+                return ret;
+        }
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {

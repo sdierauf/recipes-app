@@ -9,7 +9,7 @@ var ResultController = function(container, foodId) {
   }
 
   var showRecipeSegue = function() {
-    model.lastDishId = id;
+    model.tempDishId = id;
     model.showRecipe();
   }
   

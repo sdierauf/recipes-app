@@ -56,6 +56,7 @@ var DinnerModel = function() {
 	this.menu = {};
 	this.searchType = '';
 	this.searchString = '';
+	this.tempDishId = 0;
 
 
 	// Generic view controls 
@@ -86,6 +87,7 @@ var DinnerModel = function() {
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
+		this.notifyViews(EVENTS.DISH_CHANGED);
 	}
 
 	this.dinnerEditSegue = function(){

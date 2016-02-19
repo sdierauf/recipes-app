@@ -26,7 +26,6 @@ var DishSelectorView = function(container) {
       s += "<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore";
       s += "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
       s += "</p>\n</div>\n";
-      console.log(s);
       this.foodRepo.append(s);
       var resultController = new ResultController($("#f" + food.id), food.id);
       resultController.setModel(model);

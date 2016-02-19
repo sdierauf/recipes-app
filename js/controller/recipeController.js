@@ -13,7 +13,11 @@ var RecipeController = function(container) {
   }
 
   var addDishToMenu = function() {
-    model.addDishToMenu(model.lastDishId);
+    model.addDishToMenu(model.tempDishId);
+    // The following is hacky but it clears the pending dish
+    model.tempDishId = 0;
+    model.notifyViews(EVENTS.DISH_CHANGED);
+    // </hackiness>
     backToSelectDishSegue();
   }
 

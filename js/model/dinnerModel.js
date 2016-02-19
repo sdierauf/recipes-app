@@ -83,19 +83,19 @@ var DinnerModel = function() {
 	// Specific view segues (abstract out later)
 
 	this.showRecipe = function() {
-		viewManager.hideAllViews();
+		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
 	}
 
 	this.dinnerEditSegue = function(){
-		viewManager.hideAllViews();
+		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
 	this.showDinnerOverview = function() {
-		viewManager.hideAllViews();
+		this.hideAllViews();
 		this.showView(VIEWS.OVERVIEW_VIEW);
 	}
 

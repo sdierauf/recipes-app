@@ -1,6 +1,6 @@
 var ViewManager = function() {
 	var views = {};
-	var activeViews = []; // list of viewNames that are active
+	// var activeViews = []; // list of viewNames that are active
 
 	this.assertHasView = function(viewName) {
 		if (!views[viewName]) {
@@ -10,55 +10,31 @@ var ViewManager = function() {
 
 	this.registerView = function(viewName, viewRef) {
 		views[viewName] = viewRef;
-		console.log(viewName);
-		console.log(viewRef);
 	}
 
-	this.hideView = function(viewName) {
-		this.assertHasView(viewName);
-		views[viewName].hide();
-		activeViews.splice(activeViews.indexOf(viewName), 1);
-	}
-
-	this.hideActiveViews = function() {
-		activeViews.forEach(function(viewName) {
-			this.hideView(viewName);
-		}, this);
-	}
-
-	this.forceHideAllViews = function() {
-		// unclean way of destroying all views, do not use.
-		activeViews = [];
-		for (var name in views) {
-			//this.hideView(name);
-			if (views.hasOwnProperty(name)) {
-				views[name].hide();
-			}
-		}
+	this.hideAllViews = function() {
+		this.getViews().forEach(function(view) {
+			view.hide();
+		})
 	}
 
 	this.showView = function(viewName) {
 		this.assertHasView(viewName);
 		views[viewName].show();
-		activeViews.push(viewName);
 	}
 
-	this.showOnlyView = function(viewName) {
-		this.hideActiveViews();
-		this.showView(viewName);
-	}
-
-	this.getActiveViews = function() {
+	this.getViews = function() {
 		var ret = []
-		activeViews.forEach(function (viewName) {
-			ret.push(views[viewName]);
-		});
+		for (var name in views) {
+			if (views.hasOwnProperty(name)) {
+				ret.push(views[name]);
+			}
+		}
 		return ret;
 	}
 
 	this.notifyViews = function(eventString, model) {
-		this.getActiveViews().forEach(function (view) {
-			console.log(view);
+		this.getViews().forEach(function (view) {
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
 				console.log("calling view " +  eventString);
@@ -96,7 +72,7 @@ var DinnerModel = function() {
 	}
 
 	this.hideAllViews = function() {
-		viewManager.forceHideAllViews();
+		viewManager.hideAllViews();
 	}
 
 	this.notifyViews = function(eventString) {
@@ -107,19 +83,19 @@ var DinnerModel = function() {
 	// Specific view segues (abstract out later)
 
 	this.showRecipe = function() {
-		viewManager.hideActiveViews();
+		viewManager.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
 	}
 
 	this.dinnerEditSegue = function(){
-		viewManager.hideActiveViews();
+		viewManager.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
 	}
 
 	this.showDinnerOverview = function() {
-		viewManager.hideActiveViews();
+		viewManager.hideAllViews();
 		this.showView(VIEWS.OVERVIEW_VIEW);
 	}
 

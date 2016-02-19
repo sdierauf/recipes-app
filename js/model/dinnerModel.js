@@ -186,8 +186,11 @@ var DinnerModel = function() {
 
 	// Resync all views
 	this.broadcastState = function() {
-		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
-		this.notifyViews(EVENTS.DISH_CHANGED); 
+		for (event in EVENTS) {
+			if (EVENTS.hasOwnProperty(event)) {
+				this.notifyViews(event);
+			}
+		}
 	}
 
 	this.getAllDishes = function(type, match) {

@@ -49,7 +49,7 @@ var ViewManager = function() {
 
 //DinnerModel Object constructor
 var DinnerModel = function() {
-	
+
 	var viewManager = new ViewManager();
 	// and selected dinner options for dinner menu
 	this.numGuests = 4;//Preset to 4
@@ -190,29 +190,7 @@ var DinnerModel = function() {
 		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
-	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
-	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
-	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (type,filter) {
-		return $(dishes).filter(function(index,dish) {
-			var found = true;
-			if(filter){
-				found = false;
-				$.each(dish.ingredients,function(index,ingredient) {
-					if(ingredient.name.indexOf(filter)!=-1) {
-						found = true;
-					}
-				});
-				if(dish.name.indexOf(filter) != -1)
-				{
-					found = true;
-				}
-			}
-			return dish.type == type && found;
-		});	
-	}
-
-	this.betterGetAllDishes = function(type, match) {
+	this.getAllDishes = function(type, match) {
 		var ret = [];
 		dishes.forEach(function (el) {
 			if (el.type == type) {

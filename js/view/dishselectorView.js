@@ -11,7 +11,7 @@ var DishSelectorView = function(container) {
   this.foodRepo = container.find("#foodRepo");
 
   this[EVENTS.FILTER_FOOD] = function(model) {
-    var foods = model.betterGetAllDishes(
+    var foods = model.getAllDishes(
       model.searchType, model.searchString);
     this.foodRepo.html("")
     if (!foods) {

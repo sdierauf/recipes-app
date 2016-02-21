@@ -57,3 +57,46 @@
   background: #806969; 
   border:0
 }
+
+#dishselectorView {
+  border: thin;
+  border-color: #302929;
+  border-style:solid;
+  height: 100%;
+}
+
+.dish-selector-content {
+  background-color: #DBDB93;
+  opacity: 0.95;
+  border: thin;
+  border-color: #FFFF00;
+  border-style:solid;
+}
+
+#searchInput {
+  background: #806969;
+  box-shadow: none;
+}
+
+.dishes-container {
+  display: flex;
+  margin-top:30px;
+}
+
+#foodImage {
+  width: 100%;
+}
+
+.big-spans span {
+  font-size: 250%;
+}
+
+#listOfPlatters {
+  margin-top: 100px;
+}
+
+.recipe-printer {
+  margin-top: 100px;
+  border-top: solid
+}
+

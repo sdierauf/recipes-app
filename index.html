@@ -89,15 +89,15 @@
 
 
       <!-- Dish Selector -->
-      <div id="dishselectorView" class="col-md-9" style="border: thin; border-color: #302929; border-style:solid; height: 100%;">
-        <div class="row" style="background-color: #DBDB93; opacity: 0.95; border: thin; border-color: #FFFF00; border-style:solid;">
+      <div id="dishselectorView" class="col-md-9">
+        <div class="row dish-selector-content">
           <h3>Select Dish</h3>
           <hr>
           <div class="col-sm-4 col-sm-offset-2">
-            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary" style="background: #806969; box-shadow: none;">Search:</button>
+            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary">Search:</button>
           </div>
           <div class="col-sm-6">
-            <select id="foodCategory" aria-labelledby="dropdownMenu1">
+            <select id="foodCategory">
               <option value="starter">Starter</option>
               <option value="main dish">Main Dish</option>
               <option value="dessert">Dessert</option>
@@ -109,7 +109,7 @@
           <br>
         </div>
         <div class="row">
-          <div class="col-md-12" style="display: flex; margin-top:30px;">
+          <div class="col-md-12 dishes-container">
             <br>
             <br>
             <br>
@@ -127,7 +127,7 @@
             <h2 id="foodName"></h2>
             <div class="row">
               <div class="col-sm-12">
-                <img id="foodImage" width="100%">
+                <img id="foodImage">
               </div>
             </div>
             <div class="row">
@@ -168,19 +168,19 @@
       <!-- Overview View -->
       <div id="overviewView">
         <div class="row">
-          <div class="col-md-8">
-            <span style="font-size: 250%;"> My dinner: </span> <span style="font-size: 250%;" id="people"> 4 </span> <span style="font-size: 250%;"> people</span>
+          <div class="col-md-8 big-spans">
+            <span> My dinner: </span> <span id="people"> 4 </span> <span> people</span>
           </div>
           <div class="col-md-4">
             <button class="btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
           </div>
         </div>
 
-        <div class="row" style="margin-top: 100px;" id="listOfPlatters">
+        <div class="row" id="listOfPlatters">
           <!-- Get dinner menu and add here using overviewController.setDinnerItems -->
         </div>
 
-        <div class="row" style="margin-top: 100px; border-top: solid">
+        <div class="row recipe-printer">
           <button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
         </div>
       </div>

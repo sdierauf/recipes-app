@@ -33,7 +33,7 @@
     <div class="row content">
 
       <!-- Home View -->
-  		<div id="homeView" class="col-md-12">
+  		<div id="homeView" class="col-md-12 view">
   			<div id="title-container" class="row">
   				<div id="title-box" class="col-md-4 col-md-offset-1">
   					<h3>A Home Dinner Service</h3>
@@ -49,7 +49,7 @@
 
 
       <!-- Sidebar checkout view -->
-      <div id="sidebarView" class="col-md-3">
+      <div id="sidebarView" class="col-md-3 view">
         <h3>My Dinner</h3>
         <div class="row">
           <div class="col-sm-6">
@@ -89,12 +89,15 @@
 
 
       <!-- Dish Selector -->
-      <div id="dishselectorView" class="col-md-9">
+      <div id="dishselectorView" class="col-md-9 view">
         <div class="row dish-selector-content">
-          <h3>Select Dish</h3>
-          <hr>
+          <div class="col-sm-12">
+            <h3>Select Dish</h3>
+            <hr>
+          </div>
+
           <div class="col-sm-4 col-sm-offset-2">
-            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary">Search:</button>
+            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary btn-xs">Search:</button>
           </div>
           <div class="col-sm-6">
             <select id="foodCategory">
@@ -103,15 +106,12 @@
               <option value="dessert">Dessert</option>
             </select>
           </div>
-          <br>
-          <br>
-          <br>
-          <br>
+          <div class="col-md-12">
+            <br>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-12 dishes-container">
-            <br>
-            <br>
             <br>
             <br>
             <div id="foodRepo">
@@ -121,7 +121,7 @@
       </div>
 
     <!-- Recipe View -->
-      <div id="recipeView" class="col-md-9">
+      <div id="recipeView" class="col-md-9 view">
         <div class="row">
           <div class="col-md-6">
             <h2 id="foodName"></h2>

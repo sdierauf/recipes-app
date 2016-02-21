@@ -10,15 +10,20 @@
 }
 
 .content {
+  min-height: 475px;
   border: medium;
   border-color: #302929; 
   border-style:solid;
 }
 
+.content .view {
+  height: 100%;
+}
+
 #homeView {
   background-image:url('images/family.jpg');
   background-size:cover;
-  height:600px;
+  height: 100%
 }
 
 #title-container {
@@ -48,8 +53,8 @@
 #sidebarView {
   background: #C3AEAE;
   height: 100%;
-  border:thin; 
-  border-style:solid; 
+  border:thin;
+  border-style:solid;
   border-color:black;
 }
 

@@ -13,8 +13,7 @@
 
 <body>
 	<div class="container">
-		<div id="insturctionsView">
-			<div class="row">
+		<div class="row" style="height:100px; padding:0px; background-color: #FFFFCC; opacity: 0.8;">
 				<div class="col-md-4">
 					<h1>Homelette</h1>
 				</div>
@@ -22,23 +21,16 @@
 					<p style="font-style:italic;"> From the best chefs in the world to your kitchen </p>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-8">
-					<span style="font-size: 250%;"> My dinner: </span> <span style="font-size: 250%;"> 4 </span> <span style="font-size: 250%;"> people</span>
-				</div>
-				<div class="col-md-4">
-					<button class="btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
-				</div>
-			</div>
+		<div id="instructionsView">
+	        <div class="row" id="instructionsHolder">
+	          <!-- Insert instructions here dynamically using instructionsView.setInstructions -->
+	          	<div class="col-md-2 col-md-offset-1">
+	          		<img src="images/icecream.jpg"></img>
+	          	</div>
+	          	<div class="col-md-3"
+	        </div>
+	      </div>
 
-			<div class="row" style="margin-top: 100px;" id="listOfPlatters">
-				<!-- Get dinner menu and add here using overviewController.setDinnerItems -->
-			</div>
-
-			<div class="row" style="margin-top: 100px; border-top: solid">
-				<button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
-			</div>
-		</div>
 		
 
 	<!-- jQuery -->
@@ -46,7 +38,7 @@
 	<!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-	<!-- The application JavaScript code -->
+	<!-- The application JavaScript code
 	<script src="js/app.js"></script>
 	<script src="js/model/dinnerModel.js"></script>
 	<script src="js/view/exampleView.js"></script>
@@ -64,10 +56,11 @@
 		var elem = document.querySelectorAll("*");
 		for (var i = 0; i < elem.length; i++) {
 			var c = getRandomColor();
-			elem[i].style.border = "thin solid " + c;
+			//elem[i].style.border = "thin solid " + c;
 		}
 
 
 	</script>
+	-->
 </body>
 </html>

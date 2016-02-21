@@ -15,7 +15,7 @@
     <div class="row">
       <!-- Header View -->
       <div class="col-md-12">
-        <div id="headerView" class="row" style="height:100px; padding:0px; background-color: #FFFFCC; opacity: 0.8;">
+        <div id="headerView" class="row" style="height:100px; padding:0px; background-color: #FFFFCC; opacity: 0.8; border: medium; border-color: #302929; border-style:solid; border-bottom-style:hidden;">
             <div id="header-logo" class="col-md-4">
               <h1> HOMELETTE </h1>
             </div>
@@ -177,10 +177,20 @@
           <!-- Get dinner menu and add here using overviewController.setDinnerItems -->
         </div>
 
-        <div class="row" style="margin-top: 100px; border-top: solid">
+        <div class="row" style="margin-top: 100px; background-color:#504848; width = 100%;">
           <button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
         </div>
       </div>
+
+      <!-- Instructions View -->
+      <div id="instructionsView">
+        <div class="row" id="instructionsHolder">
+          <!-- Insert instructions here dynamically using instructionsView.setInstructions -->
+          
+        </div>
+      </div>
+
+
 
     </div>
   </div>

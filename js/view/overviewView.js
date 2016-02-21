@@ -1,10 +1,9 @@
 var OverviewView = function(container){
-	this.peopleCounter = container.find("#peopleCounter");
+	this.peopleCounter = container.find("#people");
 	var listOfDinnerItems = [];
 
 
-	this.show = function(){
-		
+	this.show = function() {
 		container.show();
 	}
 	this.hide = function() {
@@ -20,9 +19,8 @@ var OverviewView = function(container){
 		
 		var buf = "";
 		for(var i = 0; i < listOfDinnerItems.length; i++){
-			console.log(listOfDinnerItems[i].name);
 			buf += "<div class='col-md-2 col-sm-offset-1'>"
-			buf += "<img src='images/'" + listOfDinnerItems[i].image + "width='100%''>";
+			buf += "<img src='images/" + listOfDinnerItems[i].image + "' width='100%''>";
 			buf += "<p> " + listOfDinnerItems[i].name + "</p>";
 			buf += "<p>" + model.getCostOfDish(listOfDinnerItems[i]) + " kr </p>";
 			buf += "</div>"
@@ -32,18 +30,18 @@ var OverviewView = function(container){
 				<p>" + model.getTotalMenuPrice() + " kr </p>\
 			</div>";
 		var listing = container.find("#listOfPlatters");
-		console.log(buf);
 
 		listing.html(buf);
 	}
 
 	this[EVENTS.DISH_CHANGED] = function(model) {
-		console.log("Changing DISH");
 		this.setDinnerItems(model);
 	}
 
 	this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
+		console.log("Event: Guests changed : " + model.getNumberOfGuests());
 	    this.peopleCounter.html(model.getNumberOfGuests());
+	    this.setDinnerItems(model);
 	}
 	
 }

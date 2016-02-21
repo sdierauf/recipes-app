@@ -2,6 +2,7 @@ var OverviewController = function(container) {
 
 	var model;
 	this.goBackAndEditDinner = container.find("#goBackAndEditDinnerButton");
+	this.goToInstructionsButton = container.find("#instructButton");
 	
 
 	this.setModel = function(newModel){
@@ -12,6 +13,11 @@ var OverviewController = function(container) {
 		model.dinnerEditSegue();
 	}
 
+	var goToInstructions = function(){
+		model.showInstructions();
+	}
+
 	this.goBackAndEditDinner.click(goBack);
+	this.goToInstructionsButton.click(goToInstructions);
 
 }

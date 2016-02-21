@@ -101,6 +101,11 @@ var DinnerModel = function() {
 		this.showView(VIEWS.OVERVIEW_VIEW);
 	}
 
+	this.showInstructions = function() {
+		this.hideAllViews();
+		this.showView(VIEWS.INSTRUCTIONS_VIEW)
+	}
+
 	this.searchFood = function(searchTerm, category) {
 		this.searchType = category;
 		this.searchString = searchTerm;
@@ -369,9 +374,9 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':101,
-		'name':'MD 2',
+		'name':'Roast Chicken',
 		'type':'main dish',
-		'image':'bakedbrie.jpg',
+		'image':'roastchicken.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ingredient 1',
@@ -391,10 +396,10 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':102,
-		'name':'MD 3',
+		'name':'Spring Greens',
 		'type':'main dish',
-		'image':'meatballs.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'image':'springgreens.jpg',
+		'description':"Heat the oil in a large frying pan over a high heat. Add the chopped bacon and fry for 3-4 minutes, stirring regularly, until the fat has melted and the bacon is crisp and golden-brown.",
 		'ingredients':[{ 
 			'name':'ingredient 1',
 			'quantity':2,
@@ -413,9 +418,9 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':103,
-		'name':'MD 4',
+		'name':'Moroccan Vegetables',
 		'type':'main dish',
-		'image':'meatballs.jpg',
+		'image':'moroccan.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ingredient 1',
@@ -435,7 +440,7 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':200,
-		'name':'Chocolat Ice cream',
+		'name':'Chocolate Ice cream',
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
@@ -449,7 +454,7 @@ var DinnerModel = function() {
 		'id':201,
 		'name':'Vanilla Ice cream',
 		'type':'dessert',
-		'image':'icecream.jpg',
+		'image':'vanillaicecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ice cream',
@@ -461,7 +466,7 @@ var DinnerModel = function() {
 		'id':202,
 		'name':'Strawberry',
 		'type':'dessert',
-		'image':'icecream.jpg',
+		'image':'strawberryicecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ice cream',

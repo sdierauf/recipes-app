@@ -182,17 +182,19 @@
         </div>
 
         <div class="row" style="margin-top: 100px; background-color:#504848; width = 100%;">
-          <button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
-        <div class="row recipe-printer">
-          <button class="btn btn-primary">Print full recipe</button>
+          <button class="btn btn-primary"  id="instructButton" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
         </div>
       </div>
 
       <!-- Instructions View -->
       <div id="instructionsView">
+        <div class="row">
+          <div class="col-md-8 big-spans">
+            <span> My dinner: </span> <span id="people"> 4 </span> <span> people</span>
+          </div>
+        </div>
         <div class="row" id="instructionsHolder">
-          <!-- Insert instructions here dynamically using instructionsView.setInstructions -->
-          
+          <!-- Insert instructions here dynamically using instructionsView.setInstructions -->     
         </div>
       </div>
 

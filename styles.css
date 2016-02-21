@@ -44,3 +44,16 @@
   border:0;
   margin-bottom:30px;
 }
+
+#sidebarView {
+  background: #C3AEAE;
+  height: 100%;
+  border:thin; 
+  border-style:solid; 
+  border-color:black;
+}
+
+#confirmDinner {
+  background: #806969; 
+  border:0
+}

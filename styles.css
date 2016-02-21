@@ -1,0 +1,113 @@
+#headerView {
+  height: 100px;
+  padding: 0px; 
+  background-color: #FFFFCC; 
+  opacity: 0.8;
+}
+
+#header-logo {
+  font-style:italic;
+}
+
+.content {
+  min-height: 475px;
+  border: medium;
+  border-color: #302929; 
+  border-style:solid;
+}
+
+.content .view {
+  height: 100%;
+}
+
+#homeView {
+  background-image:url('images/family.jpg');
+  background-size:cover;
+  height: 100%
+}
+
+#title-container {
+  padding-top:200px;
+}
+
+#title-box {
+  background-color:#504848;
+  opacity:0.8;
+}
+
+#title-box h3 {
+  opacity: 1.0;
+  color:#C0B9B9;
+}
+
+#title-box p {
+  color:#B0A9A9;
+}
+
+#createDinnerButton {
+  background: #806969;
+  border:0;
+  margin-bottom:30px;
+}
+
+#sidebarView {
+  background: #C3AEAE;
+  height: 100%;
+  border:thin;
+  border-style:solid;
+  border-color:black;
+}
+
+#confirmDinner {
+  background: #806969; 
+  border:0
+}
+
+#dishselectorView {
+  border: thin;
+  border-color: #302929;
+  border-style:solid;
+  height: 100%;
+}
+
+.dish-selector-content {
+  background-color: #DBDB93;
+  opacity: 0.95;
+  border: thin;
+  border-color: #FFFF00;
+  border-style:solid;
+}
+
+#searchInput {
+  background: #806969;
+  box-shadow: none;
+}
+
+.dishes-container {
+  display: flex;
+  margin-top:30px;
+}
+
+#foodImage {
+  width: 100%;
+}
+
+.big-spans span {
+  font-size: 250%;
+}
+
+#listOfPlatters {
+  margin-top: 100px;
+}
+
+.recipe-printer {
+  margin-top: 100px;
+  border-top: solid
+}
+
+.recipe-printer button {
+  margin-left: auto;
+  margin-right:auto;
+  display:block;
+  margin-top:50px
+}

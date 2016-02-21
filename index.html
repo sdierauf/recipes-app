@@ -9,6 +9,9 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css">
+
 </head>
 <body>
 	<div class="container">
@@ -16,10 +19,11 @@
       <!-- Header View -->
       <div class="col-md-12">
         <div id="headerView" class="row" style="height:100px; padding:0px; background-color: #FFFFCC; opacity: 0.8; border: medium; border-color: #302929; border-style:solid; border-bottom-style:hidden;">
+        <div id="headerView" class="row">
             <div id="header-logo" class="col-md-4">
               <h1> HOMELETTE </h1>
             </div>
-          <div id="header-text" class="col-md-8" style="font-style:italic;">
+          <div id="header-text" class="col-md-8">
             <br><br>
             <p style="text">From the best chefs in the world directly to your kitchen </p>
           </div>
@@ -27,18 +31,18 @@
      </div>
     </div>
 
-    <div class="row" style="border: medium; border-color: #302929; border-style:solid;">
+    <div class="row content">
 
       <!-- Home View -->
-  		<div id="homeView" class="col-md-12" style="background-image:url('images/family.jpg'); background-size:cover; height:600px;">
-  			<div id="title-container" class="row" style="padding-top:200px;">
-  				<div id="title-box" class="col-md-4 col-md-offset-1" style="background-color:#504848; opacity:0.8;">
-  					<h3 style="opacity: 1.0; color:#C0B9B9;">A Home Dinner Service </h3>
+  		<div id="homeView" class="col-md-12 view">
+  			<div id="title-container" class="row">
+  				<div id="title-box" class="col-md-4 col-md-offset-1">
+  					<h3>A Home Dinner Service</h3>
   					<br>
-  					<p style="color:#B0A9A9;">
+  					<p>
   						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
   					</p>
-  					<button type="button" class="btn btn-large btn-primary" id="createDinnerButton" style="background: #806969; border:0; margin-bottom:30px;"> Create new dinner </button>
+  					<button type="button" class="btn btn-large btn-primary" id="createDinnerButton"> Create new dinner </button>
   					<br>
   				</div>
   			</div> 
@@ -46,7 +50,7 @@
 
 
       <!-- Sidebar checkout view -->
-      <div id="sidebarView" class="col-md-3" style="background: #C3AEAE; height: 100%; border:thin; border-style:solid; border-color:black;">
+      <div id="sidebarView" class="col-md-3 view">
         <h3>My Dinner</h3>
         <div class="row">
           <div class="col-sm-6">
@@ -79,36 +83,36 @@
         </div>
         <div class="row">
           <div class="col-sm-12"> 
-            <button class="btn btn-primary center-block" id="confirmDinner" style="background: #806969; border:0">Confirm Dinner</button>
+            <button class="btn btn-primary center-block" id="confirmDinner">Confirm Dinner</button>
           </div>
         </div>
       </div>
 
 
       <!-- Dish Selector -->
-      <div id="dishselectorView" class="col-md-9" style="border: thin; border-color: #302929; border-style:solid; height: 100%;">
-        <div class="row" style="background-color: #DBDB93; opacity: 0.95; border: thin; border-color: #FFFF00; border-style:solid;">
-          <h3>Select Dish</h3>
-          <hr>
+      <div id="dishselectorView" class="col-md-9 view">
+        <div class="row dish-selector-content">
+          <div class="col-sm-12">
+            <h3>Select Dish</h3>
+            <hr>
+          </div>
+
           <div class="col-sm-4 col-sm-offset-2">
-            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary" style="background: #806969; box-shadow: none;">Search:</button>
+            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary btn-xs">Search:</button>
           </div>
           <div class="col-sm-6">
-            <select id="foodCategory" aria-labelledby="dropdownMenu1">
+            <select id="foodCategory">
               <option value="starter">Starter</option>
               <option value="main dish">Main Dish</option>
               <option value="dessert">Dessert</option>
             </select>
           </div>
-          <br>
-          <br>
-          <br>
-          <br>
+          <div class="col-md-12">
+            <br>
+          </div>
         </div>
         <div class="row">
-          <div class="col-md-12" style="display: flex; margin-top:30px;">
-            <br>
-            <br>
+          <div class="col-md-12 dishes-container">
             <br>
             <br>
             <div id="foodRepo">
@@ -118,13 +122,13 @@
       </div>
 
     <!-- Recipe View -->
-      <div id="recipeView" class="col-md-9">
+      <div id="recipeView" class="col-md-9 view">
         <div class="row">
           <div class="col-md-6">
             <h2 id="foodName"></h2>
             <div class="row">
               <div class="col-sm-12">
-                <img id="foodImage" width="100%">
+                <img id="foodImage">
               </div>
             </div>
             <div class="row">
@@ -165,20 +169,22 @@
       <!-- Overview View -->
       <div id="overviewView">
         <div class="row">
-          <div class="col-md-8">
-            <span style="font-size: 250%;"> My dinner: </span> <span style="font-size: 250%;" id="people"> 4 </span> <span style="font-size: 250%;"> people</span>
+          <div class="col-md-8 big-spans">
+            <span> My dinner: </span> <span id="people"> 4 </span> <span> people</span>
           </div>
           <div class="col-md-4">
             <button class="btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
           </div>
         </div>
 
-        <div class="row" style="margin-top: 100px;" id="listOfPlatters">
+        <div class="row" id="listOfPlatters">
           <!-- Get dinner menu and add here using overviewController.setDinnerItems -->
         </div>
 
         <div class="row" style="margin-top: 100px; background-color:#504848; width = 100%;">
           <button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
+        <div class="row recipe-printer">
+          <button class="btn btn-primary">Print full recipe</button>
         </div>
       </div>
 

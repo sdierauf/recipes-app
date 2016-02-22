@@ -110,7 +110,7 @@ var DinnerModel = function() {
 	this.showInstructions = function() {
 		this.hideAllViews();
 		this.showView(VIEWS.INSTRUCTIONS_VIEW);
-		loca
+		location.hash = HASH.INSTRUCTIONS;
 	}
 
 	this.searchFood = function(searchTerm, category) {

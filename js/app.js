@@ -3,6 +3,10 @@ $(function() {
 
 	// We instantiate our model
 	var model = new DinnerModel();
+
+	// Add WindowStateController;
+	var windowStateController = new WindowStateController();
+	windowStateController.setModel(model);
 	
 	// And create the needed controllers and views
 	// var exampleView = new ExampleView($("#exampleView"));
@@ -47,8 +51,7 @@ $(function() {
 
 	// Init
 	model.hideAllViews();
-	model.showView(VIEWS.HOME_VIEW);
-
+	windowStateController.checkHashOnInit();
 
 });
 
@@ -70,4 +73,12 @@ VIEWS = {
 	OVERVIEW_VIEW: "overviewView",
 	HEADER_VIEW: "headerView",
 	INSTRUCTIONS_VIEW: "instructionsView"
+}
+
+HASH = {
+	HOME: 'home',
+	RECIPE: 'recipe',
+	SEARCH: 'search',
+	OVERVIEW: 'overview',
+	INSTRUCTIONS: 'instructions'
 }

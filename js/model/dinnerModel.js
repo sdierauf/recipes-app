@@ -83,33 +83,47 @@ var DinnerModel = function() {
 
 	// Specific view segues (abstract out later)
 
-	this.showRecipe = function() {
+	this.showRecipe = function(id) {
+		if (id) {
+			this.tempDishId = id;
+		}
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
 		this.notifyViews(EVENTS.DISH_CHANGED);
+		location.hash = HASH.RECIPE + '-' + this.tempDishId;
 	}
 
 	this.dinnerEditSegue = function(){
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
+		location.hash = HASH.SEARCH;
 	}
 
 	this.showDinnerOverview = function() {
 		this.hideAllViews();
 		this.showView(VIEWS.OVERVIEW_VIEW);
+		location.hash = HASH.OVERVIEW;
 	}
 
 	this.showInstructions = function() {
 		this.hideAllViews();
-		this.showView(VIEWS.INSTRUCTIONS_VIEW)
+		this.showView(VIEWS.INSTRUCTIONS_VIEW);
+		loca
 	}
 
 	this.searchFood = function(searchTerm, category) {
 		this.searchType = category;
 		this.searchString = searchTerm;
 		this.notifyViews(EVENTS.FILTER_FOOD);
+		location.hash = HASH.SEARCH;
+	}
+
+	this.showHomeView = function() {
+		this.hideAllViews();
+		this.showView(VIEWS.HOME_VIEW);
+		location.hash = HASH.HOME;
 	}
 
 

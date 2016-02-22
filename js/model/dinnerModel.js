@@ -91,10 +91,11 @@ var DinnerModel = function() {
 	}
 
 	this.dinnerEditSegue = function(){
+		location.hash = HASH.SEARCH;
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
-		location.hash = HASH.SEARCH;
+		this.notifyViews(EVENTS.DISH_CHANGED);
 	}
 
 	this.showDinnerOverview = function() {

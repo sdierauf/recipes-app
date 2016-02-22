@@ -29,9 +29,7 @@ var InstructionsView = function(container){
 		    buf += "</div>"
 		    buf += "</div>"
 		} 
-		console.log(buf);
 		var listing = container.find("#instructionsHolder");
-		console.log(listing.html());
 		listing.html(buf);
 	}
 

@@ -91,7 +91,7 @@
   margin-top:;
 }
 
-#confirmDish{
+#confirmDish {
   background-color: #C3AEAE;
   margin-bottom: 5px;
 }
@@ -115,10 +115,6 @@
   display: flex;
   margin-top:30px;
 }
-
-#foodImage {
-}
-
 
 .headerRow {
   width: 100%;
@@ -195,8 +191,7 @@
   background-color: #A08585;
 }
 
-#listOfPlatters {
-  border-bottom: medium;
-  border-bottom-style: solid;
-  border-bottom-color: gray;
+#overviewView hr {
+  border-top: 3px solid #ECDEDE;
+  width: 90%;
 }

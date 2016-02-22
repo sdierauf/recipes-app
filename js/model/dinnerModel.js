@@ -56,7 +56,6 @@ var DinnerModel = function() {
 	this.menu = {};
 	this.searchType = '';
 	this.searchString = '';
-	this.tempDishId = 0;
 
 
 	// Generic view controls 
@@ -83,7 +82,8 @@ var DinnerModel = function() {
 
 	// Specific view segues (abstract out later)
 
-	this.showRecipe = function() {
+	this.showRecipe = function(id) {
+		location.hash = HASH.RECIPE + '-' + id;
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
@@ -91,29 +91,47 @@ var DinnerModel = function() {
 	}
 
 	this.dinnerEditSegue = function(){
+		location.hash = HASH.SEARCH;
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
+		this.notifyViews(EVENTS.DISH_CHANGED);
 	}
 
 	this.showDinnerOverview = function() {
 		this.hideAllViews();
 		this.showView(VIEWS.OVERVIEW_VIEW);
+		location.hash = HASH.OVERVIEW;
 	}
 
 	this.showInstructions = function() {
 		this.hideAllViews();
-		this.showView(VIEWS.INSTRUCTIONS_VIEW)
+		this.showView(VIEWS.INSTRUCTIONS_VIEW);
+		location.hash = HASH.INSTRUCTIONS;
 	}
 
 	this.searchFood = function(searchTerm, category) {
 		this.searchType = category;
 		this.searchString = searchTerm;
 		this.notifyViews(EVENTS.FILTER_FOOD);
+		location.hash = HASH.SEARCH;
+	}
+
+	this.showHomeView = function() {
+		this.hideAllViews();
+		this.showView(VIEWS.HOME_VIEW);
+		location.hash = HASH.HOME;
 	}
 
 
 	// Actual dinner model stuff
+
+	this.currentDishId = function() {
+		if (location.hash.indexOf(HASH.RECIPE) != -1) {
+			return location.hash.split('-')[1];
+		}
+		return 0;
+	}
 
 	this.setNumberOfGuests = function(num) {
 		this.numGuests = Math.max(num, 0);

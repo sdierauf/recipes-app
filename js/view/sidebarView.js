@@ -24,8 +24,9 @@ var SidebarView = function(container) {
       this.foodItems.append(row);
     }, this);
     //append pending?
-    if (model.tempDishId != 0) {
-      this.foodItems.append("<tr><td>pending " + model.tempDishId + "</td></tr>");
+    if (model.currentDishId() != 0 &&
+        !model.getFullMenu().map(function(dish) {return dish.id}).includes(Number(model.currentDishId()))) {
+      this.foodItems.append("<tr><td>pending " + model.currentDishId() + "</td></tr>");
     }
   }
 

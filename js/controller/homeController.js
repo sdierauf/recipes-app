@@ -12,5 +12,4 @@ var HomeController = function(container) {
   }
 
   this.createDinnerButton.click(createDinnerSegue);
-
 }

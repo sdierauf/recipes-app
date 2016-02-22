@@ -9,8 +9,7 @@ var ResultController = function(container, foodId) {
   }
 
   var showRecipeSegue = function() {
-    model.tempDishId = id;
-    model.showRecipe();
+    model.showRecipe(id);
   }
   
   this.linkToRecipePage.click(showRecipeSegue);

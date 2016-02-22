@@ -56,7 +56,6 @@ var DinnerModel = function() {
 	this.menu = {};
 	this.searchType = '';
 	this.searchString = '';
-	this.tempDishId = 0;
 
 
 	// Generic view controls 
@@ -84,14 +83,11 @@ var DinnerModel = function() {
 	// Specific view segues (abstract out later)
 
 	this.showRecipe = function(id) {
-		if (id) {
-			this.tempDishId = id;
-		}
+		location.hash = HASH.RECIPE + '-' + id;
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
 		this.notifyViews(EVENTS.DISH_CHANGED);
-		location.hash = HASH.RECIPE + '-' + this.tempDishId;
 	}
 
 	this.dinnerEditSegue = function(){
@@ -128,6 +124,13 @@ var DinnerModel = function() {
 
 
 	// Actual dinner model stuff
+
+	this.currentDishId = function() {
+		if (location.hash.indexOf(HASH.RECIPE) != -1) {
+			return location.hash.split('-')[1];
+		}
+		return 0;
+	}
 
 	this.setNumberOfGuests = function(num) {
 		this.numGuests = Math.max(num, 0);

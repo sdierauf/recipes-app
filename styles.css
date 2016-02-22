@@ -3,21 +3,38 @@
   padding: 0px; 
   background-color: #FFFFCC; 
   opacity: 0.8;
+  border: thin;
+  border-color: #302929; 
+  border-style:solid;
+  border-top-style: hidden;
+}
+
+#credits {
+  height: 100px;
+  padding: 0px; 
+  background-color: #FFFFCC; 
+  opacity: 0.8;
 }
 
 #header-logo {
   font-style:italic;
 }
 
+#header-title {
+  font-style: bold;
+}
+
 .container{
-  width: 180vh;
+  width: 150vh;
 }
 
 .content {
-  border: medium;
+  border: thin;
   border-color: #302929; 
   border-style:solid;
   min-height:80vh;
+  height: 130%;
+  background-color: #FFFAFA;
 }
 
 .content .view {
@@ -70,13 +87,16 @@
 
 #confirmDinner {
   background: #806969; 
-  border:0
+  border:0;
+  margin-top:;
+}
+
+#confirmDish{
+  background-color: #C3AEAE;
+  margin-bottom: 5px;
 }
 
 #dishselectorView {
-  border: thin;
-  border-color: #302929;
-  border-style:solid;
   height: 100%;
 }
 
@@ -146,7 +166,7 @@
 }
 
 .sumBar {
-  background-color: #D4D290;
+  background-color: #ECDEDE;
   height: 100%;
   margin-left: 0px;
   margin-right: 0px;
@@ -160,4 +180,23 @@
   margin-top: 100px; 
   margin-left: 0px;
   margin-right: 0px;
+}
+
+.ingredientsTable{
+  background-color: #A08585;
+}
+
+.spacing {
+  padding-top: 15px;
+}
+
+.purple-btn {
+  margin-top: 5px;
+  background-color: #A08585;
+}
+
+#listOfPlatters {
+  border-bottom: medium;
+  border-bottom-style: solid;
+  border-bottom-color: gray;
 }

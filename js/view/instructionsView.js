@@ -41,6 +41,6 @@ var InstructionsView = function(container){
 	}
 
 	this[EVENTS.NUM_GUESTS_CHANGED] = function(model){
-		this.numPeople.html = model.getNumberGuests();
+		this.numPeople.html = model.getNumberOfGuests();
 	}
 }

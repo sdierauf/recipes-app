@@ -19,12 +19,12 @@
       <!-- Header View -->
       <div class="col-md-12">
         <div id="headerView" class="row">
-            <div id="header-logo" class="col-md-4">
+            <div id="header-logo header-title" class="col-md-4">
               <h1> HOMELETTE </h1>
             </div>
-          <div id="header-text" class="col-md-8">
+          <div class="col-md-8">
             <br><br>
-            <p style="text">From the best chefs in the world directly to your kitchen </p>
+            <p id="header-logo" style="text">From the best chefs in the world directly to your kitchen </p>
           </div>
         </div>
      </div>
@@ -45,6 +45,12 @@
   					<br>
   				</div>
   			</div> 
+        <div id="credits" class="row">
+          <div class="col-md-12">
+            <br><br>
+            <p> Created by Stefan Dieruf and Daniel Carballal </p>
+          </div>
+        </div>
       </div>
 
 
@@ -138,11 +144,11 @@
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <button class="btn btn-primary" id="backToSelectDish">Back to select dish</button>
+                <button class="btn btn-purple" id="backToSelectDish">Back to select dish</button>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 ingredientsTable">
             <div class="row">
               <div class="col-sm-12">
                 <h3>Ingredients for <span id="recipeNumPeople">4</span> people:</h3>
@@ -153,12 +159,15 @@
               <div id="ingredientsList" class="col-sm-12">
               </div>
               <hr>
-              <div class="row">
-                <div class="col-sm-9">
-                  <button class="btn btn-primary" id="confirmDish">Confirm dish</button>
+              <div class="row spacing">
+                <div class="col-sm-3 col-sm-offset-8">SEK <span id="totalCostOfRecipe"></span>
+                
                 </div>
-                <div class="col-sm-3">SEK <span id="totalCostOfRecipe"></span>
+              <div class="row spacing">
+                <div class="col-sm-9 col-sm-offset-1">
+                  <button class="btn" id="confirmDish">Confirm dish</button>
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -172,7 +181,7 @@
             <span> My dinner: </span> <span id="people"> 4 </span> <span> people</span>
           </div>
           <div class="col-md-4">
-            <button class="btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
+            <button class="btn purple-btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
           </div>
         </div>
 
@@ -182,7 +191,7 @@
 
         <div class="row" id="buttonHolder">
           <div class="col-md-4 col-md-offset-5">
-            <button class="btn btn-primary"  id="instructButton">Print full recipe</button>
+            <button class="btn purple-btn"  id="instructButton">Print full recipe</button>
           </div>
         </div>
       </div>
@@ -194,7 +203,7 @@
             <span> My dinner: </span> <span id="peopleInst"> 4 </span> <span> people</span>
           </div>
           <div class="col-md-4">
-            <button class="btn" id="goBackAndEditDinner">Go back and edit dinner</button>
+            <button class="btn purple-btn" id="goBackAndEditDinner">Go back and edit dinner</button>
           </div>
         </div>
         <div class="row" id="instructionsHolder">

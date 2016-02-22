@@ -9,15 +9,20 @@
   font-style:italic;
 }
 
+.container{
+  width: 180vh;
+}
+
 .content {
-  min-height: 475px;
   border: medium;
   border-color: #302929; 
   border-style:solid;
+  min-height:80vh;
 }
 
 .content .view {
   height: 100%;
+  display:none;
 }
 
 #homeView {
@@ -45,6 +50,10 @@
   color:#B0A9A9;
 }
 
+.tablePrice {
+  background-color: gray;
+}
+
 #createDinnerButton {
   background: #806969;
   border:0;
@@ -53,7 +62,7 @@
 
 #sidebarView {
   background: #C3AEAE;
-  height: 100%;
+  height: 80vh;
   border:thin;
   border-style:solid;
   border-color:black;
@@ -72,15 +81,13 @@
 }
 
 .dish-selector-content {
-  background-color: #DBDB93;
+  background-color: #ECDEDE;
   opacity: 0.95;
-  border: thin;
-  border-color: #FFFF00;
-  border-style:solid;
 }
 
 #searchInput {
-  background: #806969;
+  background: #FFFAFA;
+  padding:5px;
   box-shadow: none;
 }
 
@@ -90,12 +97,13 @@
 }
 
 #foodImage {
+}
+
+
+.headerRow {
   width: 100%;
 }
 
-.big-spans span {
-  font-size: 250%;
-}
 
 #listOfPlatters {
   margin-top: 100px;
@@ -111,4 +119,45 @@
   margin-right:auto;
   display:block;
   margin-top:50px
+}
+
+.instruction {
+  border: 2px solid black; 
+  padding: 10px; 
+  margin-top: 30px;
+}
+
+#instructionButton {
+  margin-left: auto; 
+  margin-right:auto; 
+  display:block; 
+  margin-top:50px;
+}
+
+.headerView {
+  height:100px; 
+  padding:0px; 
+  background-color: #FFFFCC; 
+  opacity: 0.8; 
+  border: medium; 
+  border-color: #302929; 
+  border-style:solid; 
+  border-bottom-style:hidden;
+}
+
+.sumBar {
+  background-color: #D4D290;
+  height: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.sumBar span {
+  font-size:250%;
+}
+
+#buttonHolder {
+  margin-top: 100px; 
+  margin-left: 0px;
+  margin-right: 0px;
 }

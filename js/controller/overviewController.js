@@ -19,5 +19,5 @@ var OverviewController = function(container) {
 
 	this.goBackAndEditDinner.click(goBack);
 	this.goToInstructionsButton.click(goToInstructions);
-
+	
 }

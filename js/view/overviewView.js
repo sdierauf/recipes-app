@@ -24,8 +24,10 @@ var OverviewView = function(container){
 			buf += "<p> " + listOfDinnerItems[i].name + "</p>";
 			buf += "<p>" + model.getCostOfDish(listOfDinnerItems[i]) + " kr </p>";
 			buf += "</div>"
-		} 
-		buf += "<div class='col-md-1' style='border-left: solid;'>\
+		}
+		var klass = 'col-md-1';
+		if (listOfDinnerItems.length == 0) klass += ' col-md-offset-1';
+		buf += "<div class='" + klass + "' style='border-left: solid;'>\
 				<p> Total: </p>\
 				<p>" + model.getTotalMenuPrice() + " kr </p>\
 			</div>";

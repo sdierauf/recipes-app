@@ -41,8 +41,9 @@ var RecipeView = function(container) {
   }
 
   this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
-      var dish = model.getDish(model.tempDishId);
       this.numPeopleForRecipe.html(model.getNumberOfGuests());
+      var dish = model.getDish(model.currentDishId());
+      if (!dish) return;
       this.loadIngredients(model, dish);
       this.totalCostOfRecipe.html(model.getCostOfDish(dish) * model.getNumberOfGuests());
   }

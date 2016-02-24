@@ -5,7 +5,7 @@ var DinnerModel = function(newViewManager) {
 	// and selected dinner options for dinner menu
 	this.numGuests = 4;//Preset to 4
 	this.menu = {};
-	this.searchType = '';
+	this.searchType = 'starter';
 	this.searchString = '';
 
 	this.notifyViews = function(eventString) {
@@ -116,7 +116,7 @@ var DinnerModel = function(newViewManager) {
 		dishes.forEach(function (el) {
 			if (el.type == type) {
 				if (match) {
-					if (el.name.indexOf(match) != -1) {
+					if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
 						ret.push(el);
 					}
 				} else {

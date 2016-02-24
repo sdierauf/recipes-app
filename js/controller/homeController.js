@@ -6,7 +6,7 @@ var HomeController = function(container, newModel, newViewManager) {
   this.createDinnerButton = container.find("#createDinnerButton");
 
   var createDinnerSegue = function() {
-    model.dinnerEditSegue();
+    viewManager.dinnerEditSegue();
   }
 
   this.createDinnerButton.click(createDinnerSegue);

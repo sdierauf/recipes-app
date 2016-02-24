@@ -7,7 +7,7 @@ var RecipeController = function(container, newModel, newViewManager) {
   this.confirmDish = container.find("#confirmDish");
 
   var backToSelectDishSegue = function() {
-    model.dinnerEditSegue();
+    viewManager.dinnerEditSegue();
   }
 
   var addDishToMenu = function() {

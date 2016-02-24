@@ -8,74 +8,11 @@ var DinnerModel = function(newViewManager) {
 	this.searchType = '';
 	this.searchString = '';
 
-
-	// Generic view controls 
-
-	this.registerView = function(view, viewName) {
-		if (viewName) {
-			viewManager.registerView(viewName, view);
-		}
-		this.broadcastState();
-	}
-
-	this.showView = function(viewName) {
-		viewManager.showView(viewName);
-	}
-
-	this.hideAllViews = function() {
-		viewManager.hideAllViews();
-	}
-
-	this.notifyViews = function(eventString) {
-		viewManager.notifyViews(eventString, this);
-	}
-
-
-	// Specific view segues (abstract out later)
-
-	this.showRecipe = function(id) {
-		location.hash = HASH.RECIPE + '-' + id;
-		this.hideAllViews();
-		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.RECIPE_VIEW);
-		this.notifyViews(EVENTS.DISH_CHANGED);
-	}
-
-	this.dinnerEditSegue = function(){
-		location.hash = HASH.SEARCH;
-		this.hideAllViews();
-		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.SELECTOR_VIEW);
-		this.notifyViews(EVENTS.DISH_CHANGED);
-	}
-
-	this.showDinnerOverview = function() {
-		this.hideAllViews();
-		this.showView(VIEWS.OVERVIEW_VIEW);
-		location.hash = HASH.OVERVIEW;
-	}
-
-	this.showInstructions = function() {
-		this.hideAllViews();
-		this.showView(VIEWS.INSTRUCTIONS_VIEW);
-		location.hash = HASH.INSTRUCTIONS;
-	}
-
 	this.searchFood = function(searchTerm, category) {
 		this.searchType = category;
 		this.searchString = searchTerm;
-		this.notifyViews(EVENTS.FILTER_FOOD);
-		location.hash = HASH.SEARCH;
+		this.viewManager.notifyViews(EVENTS.FILTER_FOOD);
 	}
-
-	this.showHomeView = function() {
-		this.hideAllViews();
-		this.showView(VIEWS.HOME_VIEW);
-		location.hash = HASH.HOME;
-	}
-
-
-	// Actual dinner model stuff
 
 	this.currentDishId = function() {
 		if (location.hash.indexOf(HASH.RECIPE) != -1) {
@@ -86,7 +23,7 @@ var DinnerModel = function(newViewManager) {
 
 	this.setNumberOfGuests = function(num) {
 		this.numGuests = Math.max(num, 0);
-		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
+		this.viewManager.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
 	}
 
 	// should return 
@@ -145,7 +82,7 @@ var DinnerModel = function(newViewManager) {
 		if (!dish) return;
 		if (this.menu[dish.type]) this.removeDishFromMenu(id);
 		this.menu[dish.type] = id;
-		this.notifyViews(EVENTS.DISH_CHANGED); 
+		this.viewManager.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	//Removes dish from menu
@@ -157,14 +94,14 @@ var DinnerModel = function(newViewManager) {
 			return;
 		}
 		this.menu[dish.type] = null;
-		this.notifyViews(EVENTS.DISH_CHANGED); 
+		this.viewManager.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	// Resync all views
 	this.broadcastState = function() {
 		for (event in EVENTS) {
 			if (EVENTS.hasOwnProperty(event)) {
-				this.notifyViews(event);
+				this.viewManager.notifyViews(event);
 			}
 		}
 	}

@@ -7,7 +7,7 @@ var ResultController = function(container, newModel, newViewManager, foodId) {
   this.linkToRecipePage = container.find("img");
 
   var showRecipeSegue = function() {
-    model.showRecipe(id);
+    viewManager.showRecipe(id);
   }
   
   this.linkToRecipePage.click(showRecipeSegue);

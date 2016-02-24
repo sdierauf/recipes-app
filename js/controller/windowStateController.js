@@ -7,19 +7,19 @@ var WindowStateController = function(newModel, newViewManager) {
     switch(location.hash.substring(1)) {  // remove the hashtag from the string
 
       case HASH.HOME:
-        model.showHomeView();
+        viewManager.showHomeView();
         break;
 
       case HASH.SEARCH:
-        model.dinnerEditSegue();
+        viewManager.dinnerEditSegue();
         break;
 
       case HASH.OVERVIEW:
-        model.showDinnerOverview();
+        viewManager.showDinnerOverview();
         break;
 
       case HASH.INSTRUCTIONS:
-        model.showInstructions();
+        viewManager.showInstructions();
         break;
        
       default:
@@ -27,9 +27,9 @@ var WindowStateController = function(newModel, newViewManager) {
           // lol refactor this
           var hash = location.hash;
           var pieces = hash.split('-');
-          model.showRecipe(pieces[1]);
+          viewManager.showRecipe(pieces[1]);
         } else {
-          model.showHomeView();
+          viewManager.showHomeView();
         }
     }
 

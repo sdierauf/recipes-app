@@ -15,7 +15,7 @@ var SidebarController = function(container, newModel, newViewManager) {
   }
 
   var confirmDinnerSegue = function() {
-    model.showDinnerOverview();
+    viewManager.showDinnerOverview();
   }
   
   this.plusPeople.click(addGuest);

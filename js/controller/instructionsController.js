@@ -6,7 +6,7 @@ var InstructionsController = function(container, newModel, newViewManager) {
 	this.goBackAndEditDinner = container.find("#goBackAndEditDinner");
 
 	var goBack = function(model){
-		model.dinnerEditSegue();
+		viewManager.dinnerEditSegue();
 	}
 
 	this.goBackAndEditDinner.click(goBack);

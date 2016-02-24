@@ -7,11 +7,11 @@ var OverviewController = function(container, newModel, newViewManager) {
 	this.goToInstructionsButton = container.find("#instructButton");
 	
 	var goBack = function(){
-		model.dinnerEditSegue();
+		viewManager.dinnerEditSegue();
 	}
 
 	var goToInstructions = function(){
-		model.showInstructions();
+		viewManager.showInstructions();
 	}
 
 	this.goBackAndEditDinner.click(goBack);

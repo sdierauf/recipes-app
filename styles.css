@@ -195,3 +195,8 @@
   border-top: 3px solid #ECDEDE;
   width: 90%;
 }
+
+.suppress-link, .suppress-link:visited, .suppress-link:hover {
+  color: black !important;
+  text-decoration: none;
+}

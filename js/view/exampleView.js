@@ -10,14 +10,12 @@ var ExampleView = function (container) {
 	this.rebuildMenu = function(menu) {
 		this.menuList.html("");
 		menu.forEach(function (item) {
-			console.log(item.name);
 			var listItem = "<li>" + item.name + "</li>"
 			this.menuList.append(listItem);
 		}, this);
 	}
 
 	this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
-		console.log("num guests changed");
 		this.numberOfGuests.html(model.getNumberOfGuests())
 	}
 

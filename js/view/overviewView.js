@@ -41,7 +41,6 @@ var OverviewView = function(container){
 	}
 
 	this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {
-		console.log("Event: Guests changed : " + model.getNumberOfGuests());
 	    this.peopleCounter.html(model.getNumberOfGuests());
 	    this.setDinnerItems(model);
 	}

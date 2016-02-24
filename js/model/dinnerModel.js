@@ -1,6 +1,5 @@
 var ViewManager = function() {
 	var views = {};
-	// var activeViews = []; // list of viewNames that are active
 
 	this.assertHasView = function(viewName) {
 		if (!views[viewName]) {
@@ -37,7 +36,6 @@ var ViewManager = function() {
 		this.getViews().forEach(function (view) {
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
-				console.log("calling view " +  eventString);
 				view[eventString](model) // call the function specified by eventString
 				// passing a reference to this model
 			}		

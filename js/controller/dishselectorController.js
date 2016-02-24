@@ -13,7 +13,6 @@ var DishSelectorController = function(container) {
 
     var searchTerm = searchInput.value;
     var category = this.foodCategory.val();
-    console.log(searchTerm + " " + category);
     model.searchFood(searchTerm, category);
 
   }.bind(this);

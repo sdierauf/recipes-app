@@ -31,8 +31,7 @@ var RecipeView = function(container) {
 
   this[EVENTS.DISH_CHANGED] = function(model) {
     var dish = model.getDish(model.currentDishId());
-    console.log(dish);
-    if (!dish) {console.log(' no dish ' + model.currentDishId()); return;}
+    if (!dish) { console.log(' no dish ' + model.currentDishId()); return; }
     this.foodName.html(dish.name);
     this.foodImage.attr("src", "images/" + dish.image);
     this.details.html(dish.description);

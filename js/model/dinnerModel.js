@@ -223,7 +223,7 @@ var DinnerModel = function() {
 		dishes.forEach(function (el) {
 			if (el.type == type) {
 				if (match) {
-					if (el.name.indexOf(match) != -1) {
+					if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
 						ret.push(el);
 					}
 				} else {

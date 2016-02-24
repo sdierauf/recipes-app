@@ -11,9 +11,13 @@ var DishSelectorView = function(container) {
   this.foodRepo = container.find("#foodRepo");
 
   this[EVENTS.FILTER_FOOD] = function(model) {
+    this.displayDishes(model);
+  }
+
+  this.displayDishes = function(model){
     var foods = model.getAllDishes(
       model.searchType, model.searchString);
-    this.foodRepo.html("")
+    this.foodRepo.html("");
     if (!foods) {
       return;
     }

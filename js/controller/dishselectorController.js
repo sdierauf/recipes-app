@@ -6,19 +6,21 @@ var DishSelectorController = function(container) {
   }
 
   this.searchButton = container.find("#searchButton");
-  this.searchInput = container.find("#searchInput");
   this.foodCategory = container.find("#foodCategory");
 
-  var searchClicked = function() {
-
+  this.updateValues = function(){
+    console.log("updatign vlafdaskjjklfds");
     var searchTerm = searchInput.value;
     var category = this.foodCategory.val();
-    console.log(searchTerm + " " + category);
     model.searchFood(searchTerm, category);
+  }
 
-  }.bind(this);
+  $( "#searchInput ").keyup(function(){
+    this.updateValues();
+  }.bind(this))
 
-
-  this.searchButton.click(searchClicked);
-
+  $( '#foodCategory').change(function(){
+    this.updateValues();
+  }.bind(this))
+  
 }

@@ -1,7 +1,7 @@
 //DinnerModel Object constructor
-var DinnerModel = function() {
+var DinnerModel = function(newViewManager) {
 
-	var viewManager = new ViewManager();
+	this.viewManager = newViewManager;
 	// and selected dinner options for dinner menu
 	this.numGuests = 4;//Preset to 4
 	this.menu = {};

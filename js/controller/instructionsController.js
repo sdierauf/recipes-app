@@ -1,10 +1,9 @@
-var InstructionsController = function(container){
-	var model;
-	this.goBackAndEditDinner = container.find("#goBackAndEditDinner");
+var InstructionsController = function(container, newModel, newViewManager) {
+	
+	var model = newModel;
+	var viewManager = newViewManager
 
-	this.setModel = function(newModel){
-		model = newModel;
-	}
+	this.goBackAndEditDinner = container.find("#goBackAndEditDinner");
 
 	var goBack = function(model){
 		model.dinnerEditSegue();

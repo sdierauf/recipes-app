@@ -27,8 +27,8 @@ var DishSelectorView = function(container) {
       s += "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.";
       s += "</p>\n</div>\n";
       this.foodRepo.append(s);
-      var resultController = new ResultController($("#f" + food.id), food.id);
-      resultController.setModel(model);
+      var resultController = new ResultController($("#f" + food.id), model, model.viewManager, food.id);
+
     }, this);
   }
 

@@ -1,9 +1,6 @@
-var DishSelectorController = function(container) {
-  var model;
-
-  this.setModel = function(newModel) {
-    model = newModel;
-  }
+var DishSelectorController = function(container, newModel, newViewManager) {
+  var model = newModel;
+  var viewManager = newViewManager;
 
   this.searchButton = container.find("#searchButton");
   this.searchInput = container.find("#searchInput");

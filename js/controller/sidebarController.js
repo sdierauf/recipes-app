@@ -1,9 +1,6 @@
-var SidebarController = function(container) {
-  var model;
-
-  this.setModel = function(newModel) {
-    model = newModel;
-  }
+var SidebarController = function(container, newModel, newViewManager) {
+  var model = newModel;
+  var viewManager = newViewManager;
 
   this.plusPeople = container.find("#plusPeople");
   this.minusPeople = container.find("#minusPeople");
@@ -20,9 +17,7 @@ var SidebarController = function(container) {
   var confirmDinnerSegue = function() {
     model.showDinnerOverview();
   }
-
-
-
+  
   this.plusPeople.click(addGuest);
   this.minusPeople.click(removeGuest);
   this.confirmDinnerButton.click(confirmDinnerSegue);

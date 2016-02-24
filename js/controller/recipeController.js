@@ -1,9 +1,7 @@
-var RecipeController = function(container) {
-  var model;
+var RecipeController = function(container, newModel, newViewManager) {
 
-  this.setModel = function(newModel) {
-    model = newModel;
-  }
+  var model = newModel;
+  var viewManager = newViewManager;
 
   this.backToSelectDish = container.find("#backToSelectDish");
   this.confirmDish = container.find("#confirmDish");

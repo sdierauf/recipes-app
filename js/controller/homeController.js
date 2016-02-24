@@ -1,11 +1,9 @@
-var HomeController = function(container) {
+var HomeController = function(container, newModel, newViewManager) {
   
-  var model;
-  this.createDinnerButton = container.find("#createDinnerButton");
+  var model = newModel;
+  var viewManager = newViewManager;
 
-  this.setModel = function(newModel) {
-    model = newModel;
-  }
+  this.createDinnerButton = container.find("#createDinnerButton");
 
   var createDinnerSegue = function() {
     model.dinnerEditSegue();

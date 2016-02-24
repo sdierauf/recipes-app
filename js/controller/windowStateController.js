@@ -1,9 +1,7 @@
-var WindowStateController = function() {
-  var model; 
+var WindowStateController = function(newModel, newViewManager) {
 
-  this.setModel = function(newModel) {
-    model = newModel;
-  }
+  var model = newModel;
+  var viewManager = newViewManager
 
   var locationHashChange = function() {
     switch(location.hash.substring(1)) {  // remove the hashtag from the string

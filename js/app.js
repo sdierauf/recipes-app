@@ -2,12 +2,11 @@ $(function() {
 
 
 	// We instantiate our model
-	var model = new DinnerModel();
-	var viewManager = new ViewManager(model);
+	var viewManager = new ViewManager();
+	var model = new DinnerModel(viewManager);
 
 	// Add WindowStateController;
-	var windowStateController = new WindowStateController();
-	windowStateController.setModel(model);
+	var windowStateController = new WindowStateController(model, viewManager);
 	
 	// And create the needed controllers and views
 	// var exampleView = new ExampleView($("#exampleView"));

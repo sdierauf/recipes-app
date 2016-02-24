@@ -3,6 +3,7 @@ $(function() {
 
 	// We instantiate our model
 	var model = new DinnerModel();
+	var viewManager = new ViewManager(model);
 
 	// Add WindowStateController;
 	var windowStateController = new WindowStateController();
@@ -15,42 +16,33 @@ $(function() {
 	// var overviewController = new OverviewController($("overviewView"));
 
 	var homeView = new HomeView($("#homeView"));
-	var homeController = new HomeController($("#homeView"));
+	var homeController = new HomeController($("#homeView"), model, viewManager);
 
 	var dishSelectorView = new DishSelectorView($("#dishselectorView"));
-	var dishSelectorController = new DishSelectorController($("#dishselectorView"));
+	var dishSelectorController = new DishSelectorController($("#dishselectorView"), model, viewManager);
 
 	var sidebarView = new SidebarView($("#sidebarView"));
-	var sidebarController = new SidebarController($("#sidebarView"));
+	var sidebarController = new SidebarController($("#sidebarView"), model, viewManager);
 
 	var recipeView = new RecipeView($("#recipeView"));
-	var recipeController = new RecipeController($("#recipeView"));
+	var recipeController = new RecipeController($("#recipeView"), model, viewManager);
 
 	var overviewView = new OverviewView($("#overviewView"));
-	var overviewController = new OverviewController($("#overviewView"));
+	var overviewController = new OverviewController($("#overviewView"), model, viewManager);
 
 	var instructionsView = new InstructionsView($("#instructionsView"));
-	var instructionsController = new InstructionsController($("#instructionsView"));
-
-	// Register Models to Controllers
-	homeController.setModel(model);
-	dishSelectorController.setModel(model);
-	sidebarController.setModel(model);
-	recipeController.setModel(model);
-	overviewController.setModel(model);
-	instructionsController.setModel(model);
-
+	var instructionsController = new InstructionsController($("#instructionsView"), model, viewManager);
 
 	// Register Views
-	model.registerView(homeView, VIEWS.HOME_VIEW);
-	model.registerView(dishSelectorView, VIEWS.SELECTOR_VIEW);
-	model.registerView(recipeView, VIEWS.RECIPE_VIEW);
-	model.registerView(sidebarView, VIEWS.SIDEBAR_VIEW);
-	model.registerView(overviewView, VIEWS.OVERVIEW_VIEW);
-	model.registerView(instructionsView, VIEWS.INSTRUCTIONS_VIEW);
+	viewManager.registerView(homeView, VIEWS.HOME_VIEW);
+	viewManager.registerView(dishSelectorView, VIEWS.SELECTOR_VIEW);
+	viewManager.registerView(recipeView, VIEWS.RECIPE_VIEW);
+	viewManager.registerView(sidebarView, VIEWS.SIDEBAR_VIEW);
+	viewManager.registerView(overviewView, VIEWS.OVERVIEW_VIEW);
+	viewManager.registerView(instructionsView, VIEWS.INSTRUCTIONS_VIEW);
 
 	// Init
-	model.hideAllViews();
+	viewManager.hideAllViews();
 	windowStateController.checkHashOnInit();
 
 });

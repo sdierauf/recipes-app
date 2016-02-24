@@ -6,7 +6,6 @@ var DishSelectorController = function(container, newModel, newViewManager) {
   this.foodCategory = container.find("#foodCategory");
 
   this.updateValues = function(){
-    console.log("updatign vlafdaskjjklfds");
     var searchTerm = searchInput.value;
     var category = this.foodCategory.val();
     model.searchFood(searchTerm, category);

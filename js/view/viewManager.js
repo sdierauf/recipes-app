@@ -16,8 +16,10 @@ var ViewManager = function() {
 
 	this.hideAllViews = function() {
 		this.getViews().forEach(function(view) {
-			view.hide();
-		})
+			if (view.hide) {
+				view.hide();
+			}
+		});
 	}
 
 	this.showView = function(viewName) {
@@ -36,6 +38,7 @@ var ViewManager = function() {
 	}
 
 	this.notifyViews = function(eventString, model) {
+		console.log('model: ' + model);
 		this.getViews().forEach(function (view) {
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()
@@ -51,7 +54,6 @@ var ViewManager = function() {
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.RECIPE_VIEW);
-		this.notifyViews(EVENTS.DISH_CHANGED);
 	}
 
 	this.dinnerEditSegue = function(){
@@ -59,7 +61,6 @@ var ViewManager = function() {
 		this.hideAllViews();
 		this.showView(VIEWS.SIDEBAR_VIEW);
 		this.showView(VIEWS.SELECTOR_VIEW);
-		this.notifyViews(EVENTS.DISH_CHANGED);
 	}
 
 	this.showDinnerOverview = function() {
@@ -81,7 +82,7 @@ var ViewManager = function() {
 	}
 
 	// See a self-reference is useful
-	this.[EVENTS.FILTER_FOOD] = function() {
+	this[EVENTS.FILTER_FOOD] = function() {
 		location.hash = HASH.SEARCH;
 	}
 

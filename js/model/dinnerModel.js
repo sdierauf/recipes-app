@@ -8,10 +8,15 @@ var DinnerModel = function(newViewManager) {
 	this.searchType = '';
 	this.searchString = '';
 
+	this.notifyViews = function(eventString) {
+		console.log('in model:' + this);
+		this.viewManager.notifyViews(eventString, this);
+	}
+
 	this.searchFood = function(searchTerm, category) {
 		this.searchType = category;
 		this.searchString = searchTerm;
-		this.viewManager.notifyViews(EVENTS.FILTER_FOOD);
+		this.notifyViews(EVENTS.FILTER_FOOD);
 	}
 
 	this.currentDishId = function() {
@@ -23,7 +28,7 @@ var DinnerModel = function(newViewManager) {
 
 	this.setNumberOfGuests = function(num) {
 		this.numGuests = Math.max(num, 0);
-		this.viewManager.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
+		this.notifyViews(EVENTS.NUM_GUESTS_CHANGED);
 	}
 
 	// should return 
@@ -82,7 +87,7 @@ var DinnerModel = function(newViewManager) {
 		if (!dish) return;
 		if (this.menu[dish.type]) this.removeDishFromMenu(id);
 		this.menu[dish.type] = id;
-		this.viewManager.notifyViews(EVENTS.DISH_CHANGED); 
+		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	//Removes dish from menu
@@ -94,14 +99,14 @@ var DinnerModel = function(newViewManager) {
 			return;
 		}
 		this.menu[dish.type] = null;
-		this.viewManager.notifyViews(EVENTS.DISH_CHANGED); 
+		this.notifyViews(EVENTS.DISH_CHANGED); 
 	}
 
 	// Resync all views
 	this.broadcastState = function() {
 		for (event in EVENTS) {
 			if (EVENTS.hasOwnProperty(event)) {
-				this.viewManager.notifyViews(event);
+				this.notifyViews(event);
 			}
 		}
 	}

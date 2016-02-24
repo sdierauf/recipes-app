@@ -28,6 +28,7 @@ var WindowStateController = function(newModel, newViewManager) {
           var hash = location.hash;
           var pieces = hash.split('-');
           viewManager.showRecipe(pieces[1]);
+          model.notifyViews(EVENTS.DISH_CHANGED);
         } else {
           viewManager.showHomeView();
         }

@@ -52,7 +52,7 @@ var DinnerModel = function() {
 	// and selected dinner options for dinner menu
 	this.numGuests = 4;//Preset to 4
 	this.menu = {};
-	this.searchType = '';
+	this.searchType = 'starter';
 	this.searchString = '';
 
 

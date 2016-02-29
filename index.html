@@ -18,22 +18,24 @@
     <div class="row">
       <!-- Header View -->
       <div class="col-md-12">
+        <a href="#home" class="suppress-link">
         <div id="headerView" class="row">
-            <div id="header-logo" class="col-md-4">
+            <div id="header-logo header-title" class="col-md-4">
               <h1> HOMELETTE </h1>
             </div>
-          <div id="header-text" class="col-md-8">
+          <div class="col-md-8">
             <br><br>
-            <p style="text">From the best chefs in the world directly to your kitchen </p>
+            <p id="header-logo" style="text">From the best chefs in the world directly to your kitchen </p>
           </div>
         </div>
+        </a>
      </div>
     </div>
 
     <div class="row content">
 
       <!-- Home View -->
-  		<div id="homeView" class="col-md-12">
+  		<div id="homeView" class="col-md-12 view">
   			<div id="title-container" class="row">
   				<div id="title-box" class="col-md-4 col-md-offset-1">
   					<h3>A Home Dinner Service</h3>
@@ -45,11 +47,17 @@
   					<br>
   				</div>
   			</div> 
+        <div id="credits" class="row">
+          <div class="col-md-12">
+            <br><br>
+            <p> Created by Stefan Dieruf and Daniel Carballal </p>
+          </div>
+        </div>
       </div>
 
 
       <!-- Sidebar checkout view -->
-      <div id="sidebarView" class="col-md-3">
+      <div id="sidebarView" class="col-md-3 view">
         <h3>My Dinner</h3>
         <div class="row">
           <div class="col-sm-6">
@@ -61,7 +69,7 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-12 tablePrice">
             <table width="100%">
               <thead>
                 <tr>
@@ -75,7 +83,7 @@
             <hr>
           </div>
         </div>
-        <div class="row">
+        <div class="row tablePrice">
           <div class="col-sm-6 col-sm-offset-6">
             <span>SEK</span> <span id="agregateCost"></span>
           </div>
@@ -89,12 +97,15 @@
 
 
       <!-- Dish Selector -->
-      <div id="dishselectorView" class="col-md-9">
+      <div id="dishselectorView" class="col-md-9 view">
         <div class="row dish-selector-content">
-          <h3>Select Dish</h3>
-          <hr>
-          <div class="col-sm-4 col-sm-offset-2">
-            <input placeholder="Enter key words" id="searchInput"><button id="searchButton" class="btn btn-primary">Search:</button>
+          <div class="col-sm-12">
+            <h3>Select Dish</h3>
+            <hr>
+          </div>
+
+          <div class="col-sm-4 col-sm-offset-1">
+            <input placeholder="Enter key words" id="searchInput">
           </div>
           <div class="col-sm-6">
             <select id="foodCategory">
@@ -103,15 +114,12 @@
               <option value="dessert">Dessert</option>
             </select>
           </div>
-          <br>
-          <br>
-          <br>
-          <br>
+          <div class="col-md-12">
+            <br>
+          </div>
         </div>
         <div class="row">
           <div class="col-md-12 dishes-container">
-            <br>
-            <br>
             <br>
             <br>
             <div id="foodRepo">
@@ -121,7 +129,7 @@
       </div>
 
     <!-- Recipe View -->
-      <div id="recipeView" class="col-md-9">
+      <div id="recipeView" class="col-md-9 view">
         <div class="row">
           <div class="col-md-6">
             <h2 id="foodName"></h2>
@@ -138,11 +146,11 @@
             </div>
             <div class="row">
               <div class="col-sm-12">
-                <button class="btn btn-primary" id="backToSelectDish">Back to select dish</button>
+                <button class="btn btn-purple" id="backToSelectDish">Back to select dish</button>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6 ingredientsTable">
             <div class="row">
               <div class="col-sm-12">
                 <h3>Ingredients for <span id="recipeNumPeople">4</span> people:</h3>
@@ -153,12 +161,15 @@
               <div id="ingredientsList" class="col-sm-12">
               </div>
               <hr>
-              <div class="row">
-                <div class="col-sm-9">
-                  <button class="btn btn-primary" id="confirmDish">Confirm dish</button>
+              <div class="row spacing">
+                <div class="col-sm-3 col-sm-offset-8">SEK <span id="totalCostOfRecipe"></span>
+                
                 </div>
-                <div class="col-sm-3">SEK <span id="totalCostOfRecipe"></span>
+              <div class="row spacing">
+                <div class="col-sm-9 col-sm-offset-1">
+                  <button class="btn" id="confirmDish">Confirm dish</button>
                 </div>
+              </div>
               </div>
             </div>
           </div>
@@ -166,24 +177,49 @@
       </div>
 
       <!-- Overview View -->
-      <div id="overviewView">
-        <div class="row">
+      <div id="overviewView" class="view">
+        <div class="row headerRow sumBar">
           <div class="col-md-8 big-spans">
             <span> My dinner: </span> <span id="people"> 4 </span> <span> people</span>
           </div>
           <div class="col-md-4">
-            <button class="btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
+            <button class="btn purple-btn" id="goBackAndEditDinnerButton">Go back and edit dinner</button>
           </div>
         </div>
 
         <div class="row" id="listOfPlatters">
           <!-- Get dinner menu and add here using overviewController.setDinnerItems -->
         </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            <hr>
+          </div>
+        </div>
 
-        <div class="row recipe-printer">
-          <button class="btn btn-primary" style="margin-left: auto; margin-right:auto; display:block; margin-top:50px;">Print full recipe</button>
+        <div class="row" id="buttonHolder">
+          <div class="col-md-4 col-md-offset-5">
+            <button class="btn purple-btn"  id="instructButton">Print full recipe</button>
+          </div>
         </div>
       </div>
+
+      <!-- Instructions View -->
+      <div id="instructionsView" class="view">
+        <div class="row sumBar">
+          <div class="col-md-8 big-spans">
+            <span> My dinner: </span> <span id="peopleInst"> 4 </span> <span> people</span>
+          </div>
+          <div class="col-md-4">
+            <button class="btn purple-btn" id="goBackAndEditDinner">Go back and edit dinner</button>
+          </div>
+        </div>
+        <div class="row" id="instructionsHolder">
+          <!-- Insert instructions here dynamically using instructionsView.setInstructions -->     
+        </div>
+      </div>
+
+
 
     </div>
   </div>
@@ -202,6 +238,7 @@
   <script src="js/view/sidebarView.js"></script>
   <script src="js/view/overviewView.js"></script>
   <script src="js/view/instructionsView.js"></script>
+  <script src="js/view/viewManager.js"></script>
   <script src="js/controller/exampleController.js"></script>
   <script src="js/controller/homeController.js"></script>
   <script src="js/controller/recipeController.js"></script>
@@ -210,6 +247,7 @@
   <script src="js/controller/overviewController.js"></script>
   <script src="js/controller/resultController.js"></script>
   <script src="js/controller/instructionsController.js"></script>
+  <script src="js/controller/windowStateController.js"></script>
   
   <script src="js/app.js"></script>
 

@@ -3,22 +3,49 @@
   padding: 0px; 
   background-color: #FFFFCC; 
   opacity: 0.8;
+  border: thin;
+  border-color: #302929; 
+  border-style:solid;
+  border-top-style: hidden;
+}
+
+#credits {
+  height: 100px;
+  padding: 0px; 
+  background-color: #FFFFCC; 
+  opacity: 0.8;
 }
 
 #header-logo {
   font-style:italic;
 }
 
+#header-title {
+  font-style: bold;
+}
+
+.container{
+  width: 150vh;
+}
+
 .content {
-  border: medium;
+  border: thin;
   border-color: #302929; 
   border-style:solid;
+  min-height:80vh;
+  height: 130%;
+  background-color: #FFFAFA;
+}
+
+.content .view {
+  height: 100%;
+  display:none;
 }
 
 #homeView {
   background-image:url('images/family.jpg');
   background-size:cover;
-  height:600px;
+  height: 100%
 }
 
 #title-container {
@@ -28,6 +55,7 @@
 #title-box {
   background-color:#504848;
   opacity:0.8;
+  margin-bottom: 50px;
 }
 
 #title-box h3 {
@@ -39,6 +67,10 @@
   color:#B0A9A9;
 }
 
+.tablePrice {
+  background-color: gray;
+}
+
 #createDinnerButton {
   background: #806969;
   border:0;
@@ -47,34 +79,35 @@
 
 #sidebarView {
   background: #C3AEAE;
-  height: 100%;
-  border:thin; 
-  border-style:solid; 
+  height: 80vh;
+  border:thin;
+  border-style:solid;
   border-color:black;
 }
 
 #confirmDinner {
   background: #806969; 
-  border:0
+  border:0;
+  margin-top:;
+}
+
+#confirmDish {
+  background-color: #C3AEAE;
+  margin-bottom: 5px;
 }
 
 #dishselectorView {
-  border: thin;
-  border-color: #302929;
-  border-style:solid;
   height: 100%;
 }
 
 .dish-selector-content {
-  background-color: #DBDB93;
+  background-color: #ECDEDE;
   opacity: 0.95;
-  border: thin;
-  border-color: #FFFF00;
-  border-style:solid;
 }
 
 #searchInput {
-  background: #806969;
+  background: #FFFAFA;
+  padding:5px;
   box-shadow: none;
 }
 
@@ -83,13 +116,10 @@
   margin-top:30px;
 }
 
-#foodImage {
+.headerRow {
   width: 100%;
 }
 
-.big-spans span {
-  font-size: 250%;
-}
 
 #listOfPlatters {
   margin-top: 100px;
@@ -100,3 +130,73 @@
   border-top: solid
 }
 
+.recipe-printer button {
+  margin-left: auto;
+  margin-right:auto;
+  display:block;
+  margin-top:50px
+}
+
+.instruction {
+  border: 2px solid black; 
+  padding: 10px; 
+  margin-top: 30px;
+}
+
+#instructionButton {
+  margin-left: auto; 
+  margin-right:auto; 
+  display:block; 
+  margin-top:50px;
+}
+
+.headerView {
+  height:100px; 
+  padding:0px; 
+  background-color: #FFFFCC; 
+  opacity: 0.8; 
+  border: medium; 
+  border-color: #302929; 
+  border-style:solid; 
+  border-bottom-style:hidden;
+}
+
+.sumBar {
+  background-color: #ECDEDE;
+  height: 100%;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.sumBar span {
+  font-size:250%;
+}
+
+#buttonHolder {
+  margin-top: 100px; 
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.ingredientsTable{
+  background-color: #A08585;
+}
+
+.spacing {
+  padding-top: 15px;
+}
+
+.purple-btn {
+  margin-top: 5px;
+  background-color: #A08585;
+}
+
+#overviewView hr {
+  border-top: 3px solid #ECDEDE;
+  width: 90%;
+}
+
+.suppress-link, .suppress-link:visited, .suppress-link:hover {
+  color: black !important;
+  text-decoration: none;
+}

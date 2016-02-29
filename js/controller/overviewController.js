@@ -1,17 +1,20 @@
-var OverviewController = function(container) {
+var OverviewController = function(container, newModel, newViewManager) {
 
-	var model;
+	var model = newModel;
+	var viewManager = newViewManager;
+
 	this.goBackAndEditDinner = container.find("#goBackAndEditDinnerButton");
+	this.goToInstructionsButton = container.find("#instructButton");
 	
-
-	this.setModel = function(newModel){
-		model = newModel;
+	var goBack = function(){
+		viewManager.dinnerEditSegue();
 	}
 
-	var goBack = function(){
-		model.dinnerEditSegue();
+	var goToInstructions = function(){
+		viewManager.showInstructions();
 	}
 
 	this.goBackAndEditDinner.click(goBack);
-
+	this.goToInstructionsButton.click(goToInstructions);
+	
 }

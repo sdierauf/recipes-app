@@ -1,104 +1,16 @@
-var ViewManager = function() {
-	var views = {};
-	// var activeViews = []; // list of viewNames that are active
-
-	this.assertHasView = function(viewName) {
-		if (!views[viewName]) {
-			console.log(viewName + " wasn't in viewName -> view mapping!");
-		}
-	}
-
-	this.registerView = function(viewName, viewRef) {
-		views[viewName] = viewRef;
-	}
-
-	this.hideAllViews = function() {
-		this.getViews().forEach(function(view) {
-			view.hide();
-		})
-	}
-
-	this.showView = function(viewName) {
-		this.assertHasView(viewName);
-		views[viewName].show();
-	}
-
-	this.getViews = function() {
-		var ret = []
-		for (var name in views) {
-			if (views.hasOwnProperty(name)) {
-				ret.push(views[name]);
-			}
-		}
-		return ret;
-	}
-
-	this.notifyViews = function(eventString, model) {
-		this.getViews().forEach(function (view) {
-			// Magic js ahead:
-			if (view[eventString]) { // If the view implements view.eventString()
-				console.log("calling view " +  eventString);
-				view[eventString](model) // call the function specified by eventString
-				// passing a reference to this model
-			}		
-		});
-	}
-
-}
-
-
 //DinnerModel Object constructor
-var DinnerModel = function() {
+var DinnerModel = function(newViewManager) {
 
-	var viewManager = new ViewManager();
+	this.viewManager = newViewManager;
 	// and selected dinner options for dinner menu
 	this.numGuests = 4;//Preset to 4
 	this.menu = {};
-	this.searchType = '';
+	this.searchType = 'starter';
 	this.searchString = '';
-	this.tempDishId = 0;
-
-
-	// Generic view controls 
-
-	this.registerView = function(view, viewName) {
-		if (viewName) {
-			viewManager.registerView(viewName, view);
-		}
-		this.broadcastState();
-	}
-
-	this.showView = function(viewName) {
-		viewManager.showView(viewName);
-	}
-
-	this.hideAllViews = function() {
-		viewManager.hideAllViews();
-	}
 
 	this.notifyViews = function(eventString) {
-		viewManager.notifyViews(eventString, this);
-	}
-
-
-	// Specific view segues (abstract out later)
-
-	this.showRecipe = function() {
-		this.hideAllViews();
-		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.RECIPE_VIEW);
-		this.notifyViews(EVENTS.DISH_CHANGED);
-	}
-
-	this.dinnerEditSegue = function(){
-		this.hideAllViews();
-		this.showView(VIEWS.SIDEBAR_VIEW);
-		this.showView(VIEWS.SELECTOR_VIEW);
-	}
-
-	this.showDinnerOverview = function() {
-		this.hideAllViews();
-		this.showView(VIEWS.OVERVIEW_VIEW);
+		console.log('in model:' + this);
+		this.viewManager.notifyViews(eventString, this);
 	}
 
 	this.searchFood = function(searchTerm, category) {
@@ -107,8 +19,12 @@ var DinnerModel = function() {
 		this.notifyViews(EVENTS.FILTER_FOOD);
 	}
 
-
-	// Actual dinner model stuff
+	this.currentDishId = function() {
+		if (location.hash.indexOf(HASH.RECIPE) != -1) {
+			return location.hash.split('-')[1];
+		}
+		return 0;
+	}
 
 	this.setNumberOfGuests = function(num) {
 		this.numGuests = Math.max(num, 0);
@@ -200,7 +116,7 @@ var DinnerModel = function() {
 		dishes.forEach(function (el) {
 			if (el.type == type) {
 				if (match) {
-					if (el.name.indexOf(match) != -1) {
+					if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
 						ret.push(el);
 					}
 				} else {
@@ -369,9 +285,9 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':101,
-		'name':'MD 2',
+		'name':'Roast Chicken',
 		'type':'main dish',
-		'image':'bakedbrie.jpg',
+		'image':'roastchicken.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ingredient 1',
@@ -391,10 +307,10 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':102,
-		'name':'MD 3',
+		'name':'Spring Greens',
 		'type':'main dish',
-		'image':'meatballs.jpg',
-		'description':"Here is how you make it... Lore ipsum...",
+		'image':'springgreens.jpg',
+		'description':"Heat the oil in a large frying pan over a high heat. Add the chopped bacon and fry for 3-4 minutes, stirring regularly, until the fat has melted and the bacon is crisp and golden-brown.",
 		'ingredients':[{ 
 			'name':'ingredient 1',
 			'quantity':2,
@@ -413,9 +329,9 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':103,
-		'name':'MD 4',
+		'name':'Moroccan Vegetables',
 		'type':'main dish',
-		'image':'meatballs.jpg',
+		'image':'moroccan.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ingredient 1',
@@ -435,7 +351,7 @@ var DinnerModel = function() {
 		}]
 	},{
 		'id':200,
-		'name':'Chocolat Ice cream',
+		'name':'Chocolate Ice cream',
 		'type':'dessert',
 		'image':'icecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
@@ -449,7 +365,7 @@ var DinnerModel = function() {
 		'id':201,
 		'name':'Vanilla Ice cream',
 		'type':'dessert',
-		'image':'icecream.jpg',
+		'image':'vanillaicecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ice cream',
@@ -461,7 +377,7 @@ var DinnerModel = function() {
 		'id':202,
 		'name':'Strawberry',
 		'type':'dessert',
-		'image':'icecream.jpg',
+		'image':'strawberryicecream.jpg',
 		'description':"Here is how you make it... Lore ipsum...",
 		'ingredients':[{ 
 			'name':'ice cream',

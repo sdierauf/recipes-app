@@ -23,11 +23,10 @@ var BigOvenApi = function() {
   var dishCache = {};
 
   this.wrapCb = function(cb) {
-    console.log('wrapping CB')
-    return function(cb) {
-      console.log('in cb')
-      var that = this;
-      var parsed = JSON.stringify(that.responseText)
+    console.log('wrapping cb')
+    return function() {
+      console.log('about to call cb')
+      var parsed = JSON.parse(this.responseText)
       // memoize
       console.log(cb)
       cb(parsed)
@@ -48,8 +47,8 @@ var BigOvenApi = function() {
         'api_key': this.getKey(),
         'pg': 1,
         'rpp': 10
-      }, cb)
-    )
+      }),
+      cb)
   }
 
   this.getKey = function() {
@@ -71,7 +70,7 @@ var BigOvenApi = function() {
     req.setRequestHeader('Accept', 'application/json');
     req.addEventListener('load', this.wrapCb(cb));
     req.send();
-  }.bind(this)
+  }
 
 
 

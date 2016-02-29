@@ -116,8 +116,9 @@ var DinnerModel = function(newViewManager) {
 
 		var filterDishes = function(dishes) {
 			console.log('in filterDishes!')
+			console.log(dishes)
 			var ret = [];
-			dishes.forEach(function (el) {
+			dishes.Results.forEach(function (el) {
 				if (el.type == type) {
 					if (match) {
 						if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
@@ -128,7 +129,7 @@ var DinnerModel = function(newViewManager) {
 					}
 				}
 			});
-			
+
 			cb(ret)
 		}
 

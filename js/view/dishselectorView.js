@@ -15,6 +15,7 @@ var DishSelectorView = function(container) {
   }
 
   this.displayDishes = function(foods) {
+    console.log(foods)
     this.foodRepo.html("");
     if (!foods) {
       return;
@@ -32,7 +33,7 @@ var DishSelectorView = function(container) {
       var resultController = new ResultController($("#f" + food.id), model, model.viewManager, food.id);
 
     }, this);
-  }
+  }.bind(this)
 
 
 }

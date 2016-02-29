@@ -2,6 +2,7 @@
 var DinnerModel = function(newViewManager) {
 
 	this.viewManager = newViewManager;
+	this.bigOvenApi = new BigOvenApi();
 	// and selected dinner options for dinner menu
 	this.numGuests = 4;//Preset to 4
 	this.menu = {};
@@ -111,20 +112,28 @@ var DinnerModel = function(newViewManager) {
 		}
 	}
 
-	this.getAllDishes = function(type, match) {
-		var ret = [];
-		dishes.forEach(function (el) {
-			if (el.type == type) {
-				if (match) {
-					if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
+	this.getAllDishes = function(type, match, cb) {
+
+		var filterDishes = function(dishes) {
+			console.log('in filterDishes!')
+			var ret = [];
+			dishes.forEach(function (el) {
+				if (el.type == type) {
+					if (match) {
+						if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
+							ret.push(el);
+						}
+					} else {
 						ret.push(el);
 					}
-				} else {
-					ret.push(el);
 				}
-			}
-		});
-		return ret;
+			});
+			
+			cb(ret)
+		}
+
+		this.bigOvenApi.getAllDishes(filterDishes)
+		
 	}
 
 	//function that returns a dish of specific ID

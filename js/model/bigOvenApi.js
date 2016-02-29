@@ -2,7 +2,7 @@ var BigOvenApi = function() {
   var apiKeys = [
     {
       key: 'r02x0R09O76JMCMc4nuM0PJXawUHpBUL',
-      expired: false
+      expired: true
     },
     {
       key: '1hg3g4Dkwr6pSt22n00EfS01rz568IR6',
@@ -18,14 +18,12 @@ var BigOvenApi = function() {
     }
   ];
 
-  var origin = 'http://api.bigoven.com/'
+  var origin = 'http://api.bigoven.com/';
 
   var dishCache = {};
 
   this.wrapCb = function(cb) {
-    console.log('wrapping cb')
     return function() {
-      console.log('about to call cb')
       var parsed = JSON.parse(this.responseText)
       // memoize
       console.log(cb)
@@ -37,13 +35,20 @@ var BigOvenApi = function() {
     if (dishCache[id]) {
       cb(dishCache[id])
     } else {
-      this.queryBigOven()
+      this.queryBigOven(
+        origin + 'recipes/' + this.composeParams({
+          'rid': id,
+          'api_key': this.getKey(),
+          'pg': 1,
+          'rpp': 10
+        }),
+        cb);
     }
   }
 
   this.getAllDishes = function(cb) {
     this.queryBigOven(
-      origin + 'recipes' + this.composeParams({
+      origin + 'recipes/' + this.composeParams({
         'api_key': this.getKey(),
         'pg': 1,
         'rpp': 10
@@ -64,7 +69,6 @@ var BigOvenApi = function() {
   }
 
   this.queryBigOven = function(url , cb) {
-    console.log('queryBigOvening: ' + url)
     var req = new XMLHttpRequest();
     req.open('GET', url);
     req.setRequestHeader('Accept', 'application/json');

@@ -30,13 +30,18 @@ var RecipeView = function(container) {
   }
 
   this[EVENTS.DISH_CHANGED] = function(model) {
-    var dish = model.getDish(model.currentDishId());
-    if (!dish) { console.log(' no dish ' + model.currentDishId()); return; }
-    this.foodName.html(dish.name);
-    this.foodImage.attr("src", "images/" + dish.image);
-    this.details.html(dish.description);
-    this.loadIngredients(model, dish);
-    this.totalCostOfRecipe.html(model.getCostOfDish(dish) * model.getNumberOfGuests());
+    
+      var updateSource = function(){ //Use as callback
+        if (!dish) { console.log(' no dish ' + model.currentDishId()); return; }
+        this.foodName.html(dish.name);
+        this.foodImage.attr("src", dish.image);
+        this.foodImage.attr("onerror", "images/" + dish.image);
+        this.foodImage.attr("width", "100%");
+        this.details.html(dish.description);
+        this.loadIngredients(model, dish);
+        this.totalCostOfRecipe.html(model.getCostOfDish(dish) * model.getNumberOfGuests());
+      }
+      var dish = model.getDish(model.currentDishId(), updateSource);
   }
 
   this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {

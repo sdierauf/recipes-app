@@ -112,36 +112,58 @@ var DinnerModel = function(newViewManager) {
 		}
 	}
 
-	this.getAllDishes = function(type, match, cb) {
+	this.getApiDish = function(id, cb){
+		//Have to do a seperate call to API for each dish ID
+
+		var setDishAttr = function(dish){
+			console.log(dish);
+			var newDish = {};
+			newDish.id = dish.RecipeID;
+			newDish.name = dish.Title;
+			newDish.image = dish.ImageURL;
+
+			console.log("Trying to push new dish");
+			dishes.push(newDish);
+			cb(newDish);
+		}
+
+		this.bigOvenApi.getDish(dish.RecipeID, setDishAttr);
+		
+	}
+
+	this.getAllDishes = function(type, match, cb, model) {
+		//Is there a way to search by type as well?
 
 		var filterDishes = function(dishes) {
-			console.log('in filterDishes!')
-			console.log(dishes)
 			var ret = [];
 			dishes.Results.forEach(function (el) {
-				if (el.type == type) {
-					if (match) {
-						if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
-							ret.push(el);
-						}
-					} else {
+				if (match) {
+					if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
 						ret.push(el);
 					}
+				} else {
+					ret.push(el);
 				}
 			});
 
-			cb(ret)
+			cb(ret, model)
 		}
-
-		this.bigOvenApi.getAllDishes(filterDishes)
+		this.bigOvenApi.getAllDishes(filterDishes);
 		
 	}
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
+	this.getDish = function (id, cb) {
 		for(key in dishes){
 			if(dishes[key].id == id) {
-				return dishes[key];
+				if(dishes[type]){ // We have all the information we need, use callback
+					cb(dishes[key])
+					return;
+				}
+				else{ //Need to call API to find new dish
+					this.getApiDish(id, cb);
+					return;
+				}
 			}
 		}
 	}

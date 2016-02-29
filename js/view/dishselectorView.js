@@ -11,10 +11,10 @@ var DishSelectorView = function(container) {
   this.foodRepo = container.find("#foodRepo");
 
   this[EVENTS.FILTER_FOOD] = function(model) {
-    model.getAllDishes(model.searchType, model.searchString, this.displayDishes)
+    model.getAllDishes(model.searchType, model.searchString, this.displayDishes, model)
   }
 
-  this.displayDishes = function(foods) {
+  this.displayDishes = function(foods, model) {
     console.log(foods)
     this.foodRepo.html("");
     if (!foods) {
@@ -24,7 +24,7 @@ var DishSelectorView = function(container) {
       // create a view-controller for each result.
       var s = "<div class='col-sm-3' id='f"+ food.id + "' style='flex=1';>\n"
       s += "<div style='border:2px solid black; padding: 5px;'> "
-      s += "<img src='images/" + food.image + "' width='100%'>\n"
+      s += "<img src='" + food.image + "' width='100%' onerrror='images/" + food.image + "'>\n"
       s += "<p style='background-color: rgb(221, 221, 221)'; text-align:center;>" + food.name + "</p></div>\n"
       s += "<p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore";
       s += "magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.";

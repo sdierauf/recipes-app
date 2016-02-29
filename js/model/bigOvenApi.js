@@ -2,7 +2,7 @@ var BigOvenApi = function() {
   var apiKeys = [
     {
       key: 'r02x0R09O76JMCMc4nuM0PJXawUHpBUL',
-      expired: true
+      expired: false
     },
     {
       key: '1hg3g4Dkwr6pSt22n00EfS01rz568IR6',
@@ -25,8 +25,6 @@ var BigOvenApi = function() {
   this.wrapCb = function(cb) {
     return function() {
       var parsed = JSON.parse(this.responseText)
-      // memoize
-      console.log(cb)
       cb(parsed)
     }
   }
@@ -46,12 +44,13 @@ var BigOvenApi = function() {
     }
   }
 
-  this.getAllDishes = function(cb) {
+  this.getAllDishes = function(keyword, cb) {
     this.queryBigOven(
       origin + 'recipes/' + this.composeParams({
         'api_key': this.getKey(),
         'pg': 1,
-        'rpp': 10
+        'rpp': 10,
+        'any_kw': keyword
       }),
       cb)
   }
@@ -69,6 +68,7 @@ var BigOvenApi = function() {
   }
 
   this.queryBigOven = function(url , cb) {
+    console.log("Sending request " + url);
     var req = new XMLHttpRequest();
     req.open('GET', url);
     req.setRequestHeader('Accept', 'application/json');

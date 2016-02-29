@@ -15,12 +15,13 @@ var DishSelectorView = function(container) {
   }
 
   this.displayDishes = function(foods, model) {
-    console.log(foods)
+    console.log("CB WORKED");
     this.foodRepo.html("");
     if (!foods) {
       return;
     }
     foods.forEach(function (food) {
+      console.log(food);
       // create a view-controller for each result.
       var s = "<div class='col-sm-3' id='f"+ food.id + "' style='flex=1';>\n"
       s += "<div style='border:2px solid black; padding: 5px;'> "

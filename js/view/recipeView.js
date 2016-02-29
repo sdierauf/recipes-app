@@ -7,6 +7,7 @@ var RecipeView = function(container) {
   this.numPeopleForRecipe = container.find("#recipeNumPeople");
   this.totalCostOfRecipe = container.find("#totalCostOfRecipe");
 
+}
   
   this.show = function() {
     container.show();
@@ -17,6 +18,7 @@ var RecipeView = function(container) {
   }
 
   this.loadIngredients = function(model, dish) {
+    console.log("Ingredients loading");
     var i = dish.ingredients;
     this.ingredients.html("");
     i.forEach(function (ingr) {
@@ -29,9 +31,8 @@ var RecipeView = function(container) {
     }, this); 
   }
 
-  this[EVENTS.DISH_CHANGED] = function(model) {
-    
-      var updateSource = function(){ //Use as callback
+  this[EVENTS.DISH_CHANGED] = function(model) { 
+      this.updateSource = function(dish){ //Use as callback
         if (!dish) { console.log(' no dish ' + model.currentDishId()); return; }
         this.foodName.html(dish.name);
         this.foodImage.attr("src", dish.image);
@@ -40,8 +41,10 @@ var RecipeView = function(container) {
         this.details.html(dish.description);
         this.loadIngredients(model, dish);
         this.totalCostOfRecipe.html(model.getCostOfDish(dish) * model.getNumberOfGuests());
-      }
-      var dish = model.getDish(model.currentDishId(), updateSource);
+      }.bind(this)
+
+      console.log("event update from recipe view");
+      var dish = model.getDish(model.currentDishId(), this.updateSource);
   }
 
   this[EVENTS.NUM_GUESTS_CHANGED] = function(model) {

@@ -112,22 +112,29 @@ var DinnerModel = function(newViewManager) {
 		}
 	}
 
+	//Takes a dish in API format and renames attributes to fit our data
+	var reattrDish = function(apidish){
+		var newDish = {};
+		newDish.name = apidish["Title"];
+		newDish.id = apidish["RecipeID"];
+		newDish.image = apidish["ImageURL"];
+		return newDish;
+	}
+
 	this.getApiDish = function(id, cb){
 		//Have to do a seperate call to API for each dish ID
 
-		var setDishAttr = function(dish){
-			console.log(dish);
-			var newDish = {};
-			newDish.id = dish.RecipeID;
-			newDish.name = dish.Title;
-			newDish.image = dish.ImageURL;
+		var setDishAttr = function(result){
+			var dish = result['Results']['0']; //Obtain closest result. API returns thousands of entries for some reason,
+			//but the one with the correct id is always first, it seems.
+			var newDish = reattrDish(dish);
 
-			console.log("Trying to push new dish");
+			console.log(newDish);
 			dishes.push(newDish);
 			cb(newDish);
 		}
 
-		this.bigOvenApi.getDish(dish.RecipeID, setDishAttr);
+		this.bigOvenApi.getDish(id, setDishAttr);
 		
 	}
 
@@ -137,35 +144,27 @@ var DinnerModel = function(newViewManager) {
 		var filterDishes = function(dishes) {
 			var ret = [];
 			dishes.Results.forEach(function (el) {
-				if (match) {
-					if (el.name.toLowerCase().indexOf(match.toLowerCase()) != -1) {
-						ret.push(el);
-					}
-				} else {
-					ret.push(el);
-				}
+				var renamed_dish = reattrDish(el);
+				ret.push(renamed_dish);
 			});
 
-			cb(ret, model)
+			cb(ret, model);
 		}
-		this.bigOvenApi.getAllDishes(filterDishes);
+		this.bigOvenApi.getAllDishes(match, filterDishes);
 		
 	}
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id, cb) {
+		console.log("Finding dish with id " + id)
 		for(key in dishes){
 			if(dishes[key].id == id) {
-				if(dishes[type]){ // We have all the information we need, use callback
-					cb(dishes[key])
-					return;
-				}
-				else{ //Need to call API to find new dish
-					this.getApiDish(id, cb);
-					return;
-				}
+				cb(dishes[key])
 			}
 		}
+		//If we haven't found the dishes, must do API search to find it
+		this.getApiDish(id, cb);
+		return;
 	}
 
 

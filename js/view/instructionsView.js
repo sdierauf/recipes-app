@@ -26,7 +26,7 @@ var InstructionsView = function(container){
 		    buf += "</div>";
 		    buf +=  "<div class='col-md-3 col-md-offset-1'>";
 		    buf += "<h3> Instructions</h3>";
-		    buf += "<p style='font-size:80%;'> " + listOfDinnerItems[i].description + " </p>";
+		    buf += "<p style='font-size:80%;'> " + listOfDinnerItems[i].instructions + " </p>";
 		    buf += "</div>"
 		    buf += "</div>"
 		} 

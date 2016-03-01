@@ -10,7 +10,6 @@ var DinnerModel = function(newViewManager) {
 	this.searchString = '';
 
 	this.notifyViews = function(eventString) {
-		console.log('in model:' + this);
 		this.viewManager.notifyViews(eventString, this);
 	}
 
@@ -38,8 +37,8 @@ var DinnerModel = function(newViewManager) {
 	}
 
 	//Returns the dish that is on the menu for selected type 
-	this.getSelectedDish = function(type) {
-		return this.getDish(this.menu[type])
+	this.getSelectedDish = function(type, cb) {
+		this.getDish(this.menu[type], cb)
 	}
 
 	//Returns all the dishes on the menu.
@@ -84,12 +83,16 @@ var DinnerModel = function(newViewManager) {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		console.log("Adding dish to menuuuu")
+		console.log("Adding dish " + id)
 		var dish = this.getDish(id);
 		if (!dish) return;
-		if (this.menu[dish.type]) this.removeDishFromMenu(id);
+		/*if (this.menu[dish.type]){
+			console.log("Same type " + dish.type);
+			this.removeDishFromMenu(id);
+		}*/
 		this.menu[dish.type] = id;
-		this.notifyViews(EVENTS.DISH_CHANGED); 
+		this.notifyViews(EVENTS.DISH_CHANGED);
+		console.log(this.menu) 
 	}
 
 	//Removes dish from menu
@@ -119,6 +122,8 @@ var DinnerModel = function(newViewManager) {
 		newDish.name = apidish["Title"];
 		newDish.id = apidish["RecipeID"];
 		newDish.image = apidish["ImageURL"];
+		newDish.type = apidish["Category"];
+		newDish.instructions = apidish["Instructions"]
 		if(apidish["Ingredients"]){ //This won't apply to dishes using the "search" method
 			newDish.description = apidish["Description"]
 			newDish.ingredients = []
@@ -128,7 +133,7 @@ var DinnerModel = function(newViewManager) {
 				ingr_new.name = ingr.Name
 				ingr_new.quantity = Math.round(ingr.MetricQuantity) //Because fuck you imperial system
 				ingr_new.unit = ingr.MetricUnit
-				ingr_new.price = 5
+				ingr_new.price = Math.round(ingr.MetricQuantity)
 				newDish.ingredients.push(ingr_new)
 			}
 		}
@@ -139,9 +144,9 @@ var DinnerModel = function(newViewManager) {
 		//Have to do a seperate call to API for each dish ID
 
 		var setDishAttr = function(dish){
+			console.log(dish)
 			var newDish = reattrDish(dish);
-
-			console.log(newDish);
+			console.log(newDish)
 			dishes.push(newDish);
 			cb(newDish);
 		}
@@ -168,7 +173,7 @@ var DinnerModel = function(newViewManager) {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id, cb) {
-		console.log("Finding dish with id " + id)
+		console.log("Getting dish " + id)
 		for(key in dishes){
 			if(dishes[key].id == id) {
 				return dishes[key]

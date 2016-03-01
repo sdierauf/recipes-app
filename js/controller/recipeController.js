@@ -12,8 +12,9 @@ var RecipeController = function(container, newModel, newViewManager) {
 
   var addDishToMenu = function() {
     var id = model.currentDishId();
-    backToSelectDishSegue();
+    console.log("ID is " + id)
     model.addDishToMenu(id);
+    backToSelectDishSegue();
   }
 
   this.backToSelectDish.click(backToSelectDishSegue);

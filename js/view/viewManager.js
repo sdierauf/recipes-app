@@ -38,7 +38,6 @@ var ViewManager = function() {
 	}
 
 	this.notifyViews = function(eventString, model) {
-		console.log('model: ' + model);
 		this.getViews().forEach(function (view) {
 			// Magic js ahead:
 			if (view[eventString]) { // If the view implements view.eventString()

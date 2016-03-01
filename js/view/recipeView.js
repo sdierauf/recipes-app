@@ -6,8 +6,6 @@ var RecipeView = function(container) {
   this.ingredients = container.find("#ingredientsList");
   this.numPeopleForRecipe = container.find("#recipeNumPeople");
   this.totalCostOfRecipe = container.find("#totalCostOfRecipe");
-
-}
   
   this.show = function() {
     container.show();

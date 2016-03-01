@@ -22,9 +22,26 @@ var BigOvenApi = function() {
 
   var dishCache = {};
 
-  this.wrapCb = function(cb) {
+  this.invalidateKey = function(key) {
+    console.log("expiring key: " + key)
+    for (var i = 0; i < apiKeys.length; i++) {
+      var cur = apiKeys[i];
+      if (cur.key == key) {
+        console.log("EXPIRED KEY: "+ cur.key)
+        cur.expired = true;
+      }
+    }
+  }
+
+  this.wrapCb = function(cb, self) {
     return function() {
-      var parsed = JSON.parse(this.responseText)
+      var parsed = JSON.parse(this.responseText);
+      if (parsed.Message) {
+        if (parsed.Message.includes("limit exceeded")) {
+          self.invalidateKey(self.getKey()); // should be the last key used..
+          // could get into weird race conditions here but yolo
+        }
+      }
       cb(parsed)
     }
   }
@@ -56,8 +73,10 @@ var BigOvenApi = function() {
   }
 
   this.getKey = function() {
+    console.log(apiKeys);
     for (var i = 0; i < apiKeys.length; i++) {
       if (!apiKeys[i].expired) {
+        console.log("using key: " + apiKeys[i].key)
         return apiKeys[i].key;
       }
     }
@@ -72,7 +91,7 @@ var BigOvenApi = function() {
     var req = new XMLHttpRequest();
     req.open('GET', url);
     req.setRequestHeader('Accept', 'application/json');
-    req.addEventListener('load', this.wrapCb(cb));
+    req.addEventListener('load', this.wrapCb(cb, this));
     req.send();
   }
 

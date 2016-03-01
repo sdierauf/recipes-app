@@ -19,7 +19,7 @@ var InstructionsView = function(container){
 		for(var i = 0; i < listOfDinnerItems.length; i++){
 			buf += "<div class='row'>"
 			buf += "<div class='col-md-2 col-md-offset-1 instruction'>";
-		    buf += "<img style='width: 100%' src='images/" + listOfDinnerItems[i].image + "''></img>";
+		    buf += "<img src='" + listOfDinnerItems[i].image + "' onerror='images/" + listOfDinnerItems[i].image + "'' width='100%''>"
 		    buf += "</div>";
 		    buf += "<div class='col-md-3 col-md-offset-1'>";
 		    buf +=  "<h2>" + listOfDinnerItems[i].name + "</h2>";    

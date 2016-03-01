@@ -84,6 +84,7 @@ var DinnerModel = function(newViewManager) {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
+		console.log("Adding dish to menuuuu")
 		var dish = this.getDish(id);
 		if (!dish) return;
 		if (this.menu[dish.type]) this.removeDishFromMenu(id);
@@ -118,15 +119,26 @@ var DinnerModel = function(newViewManager) {
 		newDish.name = apidish["Title"];
 		newDish.id = apidish["RecipeID"];
 		newDish.image = apidish["ImageURL"];
+		if(apidish["Ingredients"]){ //This won't apply to dishes using the "search" method
+			newDish.description = apidish["Description"]
+			newDish.ingredients = []
+			for(var i = 0; i < apidish["Ingredients"].length; i++){
+				var ingr = apidish["Ingredients"][i];
+				var ingr_new = {}
+				ingr_new.name = ingr.Name
+				ingr_new.quantity = Math.round(ingr.MetricQuantity) //Because fuck you imperial system
+				ingr_new.unit = ingr.MetricUnit
+				ingr_new.price = 5
+				newDish.ingredients.push(ingr_new)
+			}
+		}
 		return newDish;
 	}
 
 	this.getApiDish = function(id, cb){
 		//Have to do a seperate call to API for each dish ID
 
-		var setDishAttr = function(result){
-			var dish = result['Results']['0']; //Obtain closest result. API returns thousands of entries for some reason,
-			//but the one with the correct id is always first, it seems.
+		var setDishAttr = function(dish){
 			var newDish = reattrDish(dish);
 
 			console.log(newDish);
@@ -159,7 +171,7 @@ var DinnerModel = function(newViewManager) {
 		console.log("Finding dish with id " + id)
 		for(key in dishes){
 			if(dishes[key].id == id) {
-				cb(dishes[key])
+				return dishes[key]
 			}
 		}
 		//If we haven't found the dishes, must do API search to find it

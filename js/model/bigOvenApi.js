@@ -34,8 +34,7 @@ var BigOvenApi = function() {
       cb(dishCache[id])
     } else {
       this.queryBigOven(
-        origin + 'recipes/' + this.composeParams({
-          'rid': id,
+        origin + 'recipe/' + id + '/' + this.composeParams({
           'api_key': this.getKey(),
           'pg': 1,
           'rpp': 10

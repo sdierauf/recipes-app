@@ -6,8 +6,6 @@ var RecipeView = function(container) {
   this.ingredients = container.find("#ingredientsList");
   this.numPeopleForRecipe = container.find("#recipeNumPeople");
   this.totalCostOfRecipe = container.find("#totalCostOfRecipe");
-
-}
   
   this.show = function() {
     container.show();
@@ -42,8 +40,7 @@ var RecipeView = function(container) {
         this.loadIngredients(model, dish);
         this.totalCostOfRecipe.html(model.getCostOfDish(dish) * model.getNumberOfGuests());
       }.bind(this)
-
-      console.log("event update from recipe view");
+      
       var dish = model.getDish(model.currentDishId(), this.updateSource);
   }
 

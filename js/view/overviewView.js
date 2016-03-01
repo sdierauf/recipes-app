@@ -20,7 +20,7 @@ var OverviewView = function(container){
 		var buf = "";
 		for(var i = 0; i < listOfDinnerItems.length; i++){
 			buf += "<div class='col-md-2 col-sm-offset-1'>"
-			buf += "<img src='images/" + listOfDinnerItems[i].image + "' width='100%''>";
+			buf += "<img src='" + listOfDinnerItems[i].image + "' onerror='images/" + listOfDinnerItems[i].image + "'' width='100%''>";
 			buf += "<p> " + listOfDinnerItems[i].name + "</p>";
 			buf += "<p>" + model.getCostOfDish(listOfDinnerItems[i]) + " kr </p>";
 			buf += "</div>"

@@ -16,7 +16,7 @@ var RecipeView = function(container) {
   }
 
   this.loadIngredients = function(model, dish) {
-    console.log("Ingredients loading");
+    // console.log("Ingredients loading");
     var i = dish.ingredients;
     this.ingredients.html("");
     i.forEach(function (ingr) {
@@ -31,7 +31,7 @@ var RecipeView = function(container) {
 
   this[EVENTS.DISH_CHANGED] = function(model) { 
       this.updateSource = function(dish){ //Use as callback
-        if (!dish) { console.log(' no dish ' + model.currentDishId()); return; }
+        if (!dish) { return; }
         this.foodName.html(dish.name);
         this.foodImage.attr("src", dish.image);
         this.foodImage.attr("onerror", "images/" + dish.image);

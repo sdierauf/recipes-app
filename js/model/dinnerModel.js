@@ -83,16 +83,16 @@ var DinnerModel = function(newViewManager) {
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
-		console.log("Adding dish " + id)
+		// console.log("Adding dish " + id)
 		var dish = this.getDish(id);
 		if (!dish) return;
 		/*if (this.menu[dish.type]){
-			console.log("Same type " + dish.type);
+			// console.log("Same type " + dish.type);
 			this.removeDishFromMenu(id);
 		}*/
 		this.menu[dish.type] = id;
 		this.notifyViews(EVENTS.DISH_CHANGED);
-		console.log(this.menu) 
+		// console.log(this.menu) 
 	}
 
 	//Removes dish from menu
@@ -100,7 +100,7 @@ var DinnerModel = function(newViewManager) {
 		var dish = this.getDish(id)
 		if (!dish) return;
 		if (this.menu[dish.type] != id) {
-			console.log("tried to remove a dish that wasn't on the menu!");
+			// console.log("tried to remove a dish that wasn't on the menu!");
 			return;
 		}
 		this.menu[dish.type] = null;
@@ -144,9 +144,9 @@ var DinnerModel = function(newViewManager) {
 		//Have to do a seperate call to API for each dish ID
 
 		var setDishAttr = function(dish){
-			console.log(dish)
+			// console.log(dish)
 			var newDish = reattrDish(dish);
-			console.log(newDish)
+			// console.log(newDish)
 			dishes.push(newDish);
 			cb(newDish);
 		}

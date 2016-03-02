@@ -15,7 +15,7 @@ var SidebarView = function(container) {
   this.rebuildMenu = function(model) {
     this.foodItems.html("");  // clear table
     var dishes = model.getFullMenu();
-    console.log(dishes);
+    // console.log(dishes);
     dishes.forEach(function (dish) {
       var row = "<tr><td>";
       row += dish.name;
@@ -39,7 +39,7 @@ var SidebarView = function(container) {
   }
 
   this[EVENTS.DISH_CHANGED] = function(model) {
-    console.log("event update from sidebar view");
+    // console.log("event update from sidebar view");
     this.rebuildMenu(model);
     this.agregateCost.html(model.getTotalMenuPrice());
   }

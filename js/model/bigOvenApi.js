@@ -23,11 +23,11 @@ var BigOvenApi = function() {
   var dishCache = {};
 
   this.invalidateKey = function(key) {
-    console.log("expiring key: " + key)
+    // console.log("expiring key: " + key)
     for (var i = 0; i < apiKeys.length; i++) {
       var cur = apiKeys[i];
       if (cur.key == key) {
-        console.log("EXPIRED KEY: "+ cur.key)
+        // console.log("EXPIRED KEY: "+ cur.key)
         cur.expired = true;
       }
     }
@@ -41,6 +41,9 @@ var BigOvenApi = function() {
           self.invalidateKey(self.getKey()); // should be the last key used..
           // could get into weird race conditions here but yolo
         }
+      }
+      if (!parsed.Results) { // then it's a single dish
+        dishCache[parsed.RecipeID] = parsed
       }
       cb(parsed)
     }
@@ -72,14 +75,14 @@ var BigOvenApi = function() {
   }
 
   this.getKey = function() {
-    console.log(apiKeys);
+    // console.log(apiKeys);
     for (var i = 0; i < apiKeys.length; i++) {
       if (!apiKeys[i].expired) {
-        console.log("using key: " + apiKeys[i].key)
+        // console.log("using key: " + apiKeys[i].key)
         return apiKeys[i].key;
       }
     }
-    console.log("Returning undefined ");
+    // console.log("Returning undefined ");
   }
 
   this.composeParams = function(params) {
@@ -87,7 +90,7 @@ var BigOvenApi = function() {
   }
 
   this.queryBigOven = function(url , cb) {
-    console.log("Sending request " + url);
+    // console.log("Sending request " + url);
     var req = new XMLHttpRequest();
     req.open('GET', url);
     req.setRequestHeader('Accept', 'application/json');

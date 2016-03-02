@@ -6,7 +6,7 @@ var ViewManager = function() {
 
 	this.assertHasView = function(viewName) {
 		if (!views[viewName]) {
-			console.log(viewName + " wasn't in viewName -> view mapping!");
+			// console.log(viewName + " wasn't in viewName -> view mapping!");
 		}
 	}
 

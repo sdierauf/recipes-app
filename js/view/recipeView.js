@@ -12,6 +12,7 @@ var RecipeView = function(container) {
   }
 
   this.hide = function() {
+    this.foodImage.attr("src", "http://sierrafire.cr.usgs.gov/images/loading.gif")
     container.hide();
   }
 

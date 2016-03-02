@@ -173,15 +173,7 @@ var DinnerModel = function(newViewManager) {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id, cb) {
-		console.log("Getting dish " + id)
-		for(key in dishes){
-			if(dishes[key].id == id) {
-				return dishes[key]
-			}
-		}
-		//If we haven't found the dishes, must do API search to find it
 		this.getApiDish(id, cb);
-		return;
 	}
 
 

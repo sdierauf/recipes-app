@@ -6,7 +6,7 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
   
   var numberOfGuest = 2;
-
+  var menu = [];
 
   this.setNumberOfGuests = function(num) {
     numberOfGuest = num;
@@ -24,8 +24,42 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
   // check lab 5 instructions for details
 
 
+  this.getDish = function(dishId) {
+    return $resource(
+        'http://api.bigoven.com/recipe/:id',
+        {id: dishId},
+        {get: { method: 'GET', 
+                params: {
+                  api_key: '18f3cT02U9f6yRl3OKDpP8NA537kxYKu',
+                  pg: 1,
+                  rpp: 10
+                }
+              }
+        })
+  }
 
+  this.searchDishes = function(search) {
+    return $resource(
+        'http://api.bigoven.com/recipes/',
+        {},
+        {get: { method: 'GET', 
+                params: {
+                  api_key: '8vtk7KykflO5IzB96kb0mpot0sU40096',
+                  pg: 1,
+                  rpp: 15,
+                  any_kw: search
+                }
+              }
+        })
+  }
 
+  this.addDishToMenu = function(dish) {
+    menu.push(dish)
+  }
+
+  this.getMenu = function() {
+    return menu
+  }
 
   // Angular service needs to return an object that has all the
   // methods created in it. You can consider that this is instead

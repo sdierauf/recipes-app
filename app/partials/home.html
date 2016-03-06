@@ -1,3 +1,29 @@
 <!-- TODO in Lab 5: there is not much to do on the home screen. Just arrange the layout so it
 looks a bit nicer. -->
-<a href="#/search" class="btn btn-primary">Create new dinner</a>
+
+
+<ng-include src="'partials/header.html'" ng-controller="DinnerCtrl"></ng-include>
+
+<div class="row content">
+
+  <!-- Home View -->
+  <div id="homeView" class="col-md-12 view">
+    <div id="title-container" class="row">
+      <div id="title-box" class="col-md-4 col-md-offset-1">
+        <h3>A Home Dinner Service</h3>
+        <br>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        </p>
+        <a href="#/search" class="btn btn-primary">Create new dinner</a>
+        <br>
+      </div>
+    </div> 
+    <div id="credits" class="row">
+      <div class="col-md-12">
+        <br><br>
+        <p> Created by Stefan Dieruf and Daniel Carballal </p>
+      </div>
+    </div>
+  </div>
+</div>

@@ -34,3 +34,5 @@ node_modules
 
 # Bullshit OS X stuff
 .DS_Store
+
+bower_components/

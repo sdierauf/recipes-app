@@ -46,7 +46,7 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
                 params: {
                   api_key: '8vtk7KykflO5IzB96kb0mpot0sU40096',
                   pg: 1,
-                  rpp: 15,
+                  rpp: 5,
                   any_kw: search
                 }
               }

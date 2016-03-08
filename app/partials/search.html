@@ -21,6 +21,7 @@ not support it in free version) and list all the dishes that match the search. -
   </div>
   <div class="row" >
     <div class="col-sm-2" ng-repeat="dish in searchResults.Results">
+    <br>
       <a href="#/dish/{{dish.RecipeID}}">
         <img src="{{dish.ImageURL || dish.HeroPhotoUrl}}" width="100%">
       </a>

@@ -11,12 +11,15 @@
       </div>
     </div>
 
-    <div class="row" id="listOfPlatters" ng-repeat="dish in getDinnerMenu()">
-      <div class ="col-md-2 col-md-offset-1">
+    <div class="row" id="listOfPlatters">
+      <div class ="col-md-2 col-md-offset-1" ng-repeat="dish in getDinnerMenu()">
       	<img src="{{dish.ImageURL || dish.HeroPhotoUrl}}" width="100%">
       	<p> {{dish.Title}} </p>
       </div>
       <!-- Get dinner menu and add here using overviewController.setDinnerItems -->
+      <div class="col-md-2">
+        <p>Total cost: SEK {{totalCost}}</p>
+      </div>
     </div>
     
     <div class="row">

@@ -24,13 +24,7 @@ dinnerPlannerApp.controller('DinnerCtrl', function ($scope,Dinner) {
   }
 
   $scope.getTotalMenuPrice = function() {
-    var menu = Dinner.getMenu()
-    if (menu.length == 0) return 0;
-    var ingrs = menu.map(function (d) {return d.Ingredients}) // dishes -> Ingredients
-    var flat = ingrs.reduce(function (a, b) { return a.concat(b)}) // flatten array
-    var quantities = flat.map(function(d) { return d.Quantity } ) // Ingredient -> Quantity
-    var sum = quantities.reduce(function (prev, cur) { return prev + cur * $scope.getNumberOfGuests()}) // Sum
-    return sum;
+    return Dinner.getTotalMenuPrice();
   }
 
   $scope.totalCost = function(dish) {

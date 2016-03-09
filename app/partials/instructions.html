@@ -4,13 +4,21 @@
 <div id="instructionsView" class="view">
     <div class="row sumBar">
       <div class="col-md-8 big-spans">
-        <span> My dinner: </span> <span id="peopleInst"> 4 </span> <span> people</span>
+        <span> My dinner: </span> <span id="peopleInst" ng-model="numberOfGuests"> 4 </span> <span> people</span>
       </div>
       <div class="col-md-4">
-        <button class="btn purple-btn" id="goBackAndEditDinner" href="#/search.html">Go back and edit dinner</button>
+        <a class="btn purple-btn supress-link" href="#/search">Go back and edit dinner</a>
       </div>
     </div>
     <div class="row" id="instructionsHolder">
-      <!-- Insert instructions here dynamically using instructionsView.setInstructions -->     
+      <div class="col-md-12" ng-repeat="dish in getDinnerMenu()">
+        <div class="row">
+          <br>
+          <img class="col-md-2 col-md-offset-1" src="{{dish.ImageURL || dish.HeroPhotoUrl}}">
+          <h3 class="col-md-2 col-md-offset-1">{{dish.Title}}</h3>
+          <h5> Instructions </h5>
+          <p class="col-md-2 col-md-offset-1">{{dish.Instructions}}</p>
+        </div>
+      </div>   
     </div>
 </div>

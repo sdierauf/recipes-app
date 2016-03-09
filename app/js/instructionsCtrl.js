@@ -1,6 +1,6 @@
 // Confirm controller used 
 dinnerPlannerApp.controller('InstructionsCtrl', function ($scope,Dinner) {
-
+  $scope.numberOfGuests = Dinner.getNumberOfGuests();
   $scope.searchInput = '';
   $scope.searchResults;
 

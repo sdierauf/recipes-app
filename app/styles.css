@@ -188,7 +188,7 @@
 
 .purple-btn {
   margin-top: 5px;
-  background-color: #A08585;
+  background-color: #A08585 !important;
 }
 
 #overviewView hr {
@@ -198,5 +198,5 @@
 
 .suppress-link, .suppress-link:visited, .suppress-link:hover {
   color: black !important;
-  text-decoration: none;
+  text-decoration: none !important;
 }

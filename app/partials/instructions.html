@@ -4,10 +4,10 @@
 <div id="instructionsView" class="view">
     <div class="row sumBar">
       <div class="col-md-8 big-spans">
-        <span> My dinner: </span> <span id="peopleInst" ng-model="numberOfGuests"> 4 </span> <span> people</span>
+        <span> My dinner: {{numberOfGuests}} people</span>
       </div>
       <div class="col-md-4">
-        <a class="btn purple-btn supress-link" href="#/search" style="color: black !important">Go back and edit dinner</a>
+        <a class="btn purple-btn supress-link" href="#/search" style="color: black !important;">Go back and edit dinner</a>
       </div>
     </div>
     <div class="row" id="instructionsHolder">
@@ -16,8 +16,10 @@
           <br>
           <img class="col-md-2 col-md-offset-1" src="{{dish.ImageURL || dish.HeroPhotoUrl}}">
           <h3 class="col-md-2 col-md-offset-1">{{dish.Title}}</h3>
-          <h5> Instructions </h5>
-          <p class="col-md-2 col-md-offset-1">{{dish.Instructions}}</p>
+          <div class="col-md-2 col-md-offset-1">
+            <h4> Instructions </h4>
+            <p>{{dish.Instructions}}</p>
+          </div>
         </div>
       </div>   
     </div>
